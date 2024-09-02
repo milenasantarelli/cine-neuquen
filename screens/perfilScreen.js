@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView
 import Navigation from '../navigation/navigationTab';
 
 
-const PrincipalScreen= () => {
+const PerfilScreen= () => {
     
     return (
         
@@ -22,7 +22,7 @@ const PrincipalScreen= () => {
     );
 }
 
-export default PrincipalScreen;
+export default PerfilScreen;
 
 const styles = StyleSheet.create({
     container: {

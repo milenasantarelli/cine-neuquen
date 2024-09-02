@@ -1,8 +1,7 @@
 import React from "react";
-
-import Navigation from "./navigation/navigationTab";
-
+import NavigationStack from "./navigation/navigationStack";
 
 export default function App() {
-  return <Navigation/>
+
+  return <NavigationStack/>;
 }
