@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { Image } from "react-native"; // Importa el componente Image de React Native
+import { Image } from "react-native";
 
 import PrincipalScreen from "../screens/principalScreen";
 import PerfilScreen from "../screens/perfilScreen";

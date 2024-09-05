@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
 import Navigation from '../navigation/navigationTab';
 
 
@@ -10,10 +10,11 @@ const PrincipalScreen= () => {
         
         <ScrollView>
             
+            <View style={styles.cont}>
+            <Image source={require('../assets/logoappc.png')} style={styles.img}/>
+            </View>
             <View style={styles.body}>
-                <View style={styles.cont}>
-                <Text style={styles.logo}>CTN</Text>
-                </View>
+           
                 <Text style={styles.cartel}>BIENVENIDO</Text>
             </View>
             
@@ -36,13 +37,7 @@ const styles = StyleSheet.create({
     },
     cont: {
         backgroundColor: '#384358',
-        height: 150,
-    },
-    logo: {
-        color: '#fff',
-        fontSize: 84,
-        marginLeft: 120,
-        top: 7, 
+        height: 200,
     },
     cartel: {
         color: '#fff',
@@ -50,4 +45,9 @@ const styles = StyleSheet.create({
         marginLeft: 85,
         marginTop: 120,
     },
+    img:{
+        height: 180,
+        width: 180,
+        marginLeft: 120,
+    }
 });
