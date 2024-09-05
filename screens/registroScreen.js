@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0b1442',
   },
   boton: {
-    width: 300,
+    width: 250,
     marginTop: -60,
   },
   input: {
