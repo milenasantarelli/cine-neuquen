@@ -21,11 +21,12 @@ const LoginScreen = () => {
     </View>
     </View>
     <View style={style.view2}>
+    <View style={style.boton}>
       <Button
       title='Principal'
       onPress={()=> native.navigate("Tabs")}
       />
-      <Text>Boton a pantalla principal</Text>
+    </View>
     </View>
     </ScrollView>
   );
@@ -57,21 +58,27 @@ const style = StyleSheet.create({
     fontFamily: 'Arial',
   },
   inputs: {
-    marginTop: 95,
+    marginTop: 150,
   },
   titulo: {
       fontSize: 40,
       color: '#fff',
       marginLeft: 140,
-      marginTop: 30,
+      marginTop: 50,
   },
   view2: {
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
     height: 262,
     backgroundColor: '#0b1442',
+  },
+  boton: {
+    color: '#fff',
+    backgroundColor: '#0d4f83',
+    margin: 25,
+    fontSize: 20,
+    width: 250,
   },
 });
 
