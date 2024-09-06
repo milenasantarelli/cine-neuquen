@@ -10,7 +10,6 @@ const PerfilScreen= () => {
         
         <ScrollView>
             
-            
                 <View style={styles.cont}>
                 <Image source={require('../assets/logoappc.png')} style={styles.img}/>
                 </View>
