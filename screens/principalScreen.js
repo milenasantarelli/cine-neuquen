@@ -15,7 +15,7 @@ const PrincipalScreen= () => {
             </View>
             <View style={styles.body}>
            
-                <Text style={styles.cartel}>BIENVENIDO</Text>
+                <Text style={styles.cartel}>FUTURO CARRUSEL</Text>
             </View>
             
         </ScrollView>
