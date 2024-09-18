@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, ScrollView, Text } from "react-native";
 
 
-
 export default function MovieDetails({ route, navigation }) {
     const { item } = route.params || {};
 
