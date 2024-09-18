@@ -5,7 +5,6 @@ import {
     StatusBar,
     View,
     Image,
-   
     ScrollView
 } from 'react-native';
 import React from 'react';
