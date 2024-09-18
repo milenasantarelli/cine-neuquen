@@ -35,7 +35,7 @@ function MyTabs() {
   );
 }
 
-export default function Navigation() {
+export default function TabNavigation() {
   return (
   
       <MyTabs />
