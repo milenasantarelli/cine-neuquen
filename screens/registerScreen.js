@@ -27,8 +27,8 @@ const RegisterScreen = () => {
           />
         </View>
         <View style={styles.input2}>
-          <Button title='ACCESO ADMINISTRADOR'
-
+        <Button title='ACCESO ADMINISTRADOR' 
+          onPress={() => native.navigate("Administrador")}
           />
         </View>
       </View>

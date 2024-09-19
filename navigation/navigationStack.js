@@ -6,6 +6,7 @@ import PrincipalScreen from "../screens/principalScreen";
 import RegistroScreen from "../screens/registroScreen";
 import LoginScreen from "../screens/loginScreen";
 import TabNavigation from "./navigationTab";
+import AccesoAdminScreen from "../screens/accesoPersonalScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ const NavigationStack = () => {
 
         <Stack.Screen name="Principal" component={PrincipalScreen} options={{ title: 'Pantalla Principal' }} />
 
+        <Stack.Screen name="Administrador" component={AccesoAdminScreen} options={{ title: 'Acceso Administrador' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
