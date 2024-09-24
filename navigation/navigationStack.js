@@ -29,6 +29,7 @@ const NavigationStack = () => {
 
         <Stack.Screen name="Principal" component={PrincipalScreen} options={{ title: 'Pantalla Principal' }} />
 
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
