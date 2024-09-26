@@ -1,11 +1,29 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import appFirebase from '../credenciales';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+const auth = getAuth(appFirebase)
 
 
+export default function LoginScreen(props) {
+ 
 
-const LoginScreen = () => {
-  const native = useNavigation();
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const logueo = async()=>{
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      Alert.alert('Iniciando Sesion', 'Accediendo...')
+      props.navigation.navigate('Principal')
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <ScrollView>
     <View style={style.view1}>
@@ -13,25 +31,26 @@ const LoginScreen = () => {
     <View style={style.inputs}>
       <TextInput style={style.input}
         placeholder="Correo Electrónico"
+        onChangeText={(text)=> setEmail(text)}
       />
       <TextInput style={style.input}
         placeholder="Contraseña"
-        secureTextEntry
+        onChangeText={(text)=> setPassword(text)}
+        secureTextEntry={true}
       />
     </View>
     </View>
     <View style={style.view2}>
     <View style={style.boton}>
-      <Button
-      title='Principal'
-      onPress={()=> native.navigate("Tabs")}
-      />
+      <TouchableOpacity onPress={logueo}>
+        <Text>Sing In</Text>
+      </TouchableOpacity>
     </View>
     </View>
     </ScrollView>
   );
 }
-export default LoginScreen;
+
 
 const style = StyleSheet.create({
   container: {

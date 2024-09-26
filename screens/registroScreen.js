@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { firebase } from "../firebase"
+
 
 const RegistroScreen = () => {
   const native = useNavigation();
