@@ -43,7 +43,7 @@ export default function LoginScreen(props) {
     <View style={style.view2}>
     <View style={style.boton}>
       <TouchableOpacity onPress={logueo}>
-        <Text>Sing In</Text>
+        <Text>Sing in</Text>
       </TouchableOpacity>
     </View>
     </View>
