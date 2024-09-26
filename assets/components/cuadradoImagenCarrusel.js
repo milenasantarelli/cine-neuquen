@@ -48,11 +48,7 @@ const CuadradoImagenCarrusel = ({ data, onImagePress, autoPlay }) => {
             clearInterval(interval.current);
         };
     }, [SIZE, SPACER, isAutoPlay, data.length, offSet.value, scrollViewRef]);
-    // const onImagePress = (index) => {
-    //     // Navegar a otra pantalla cuando se presione una imagen
-    //     console.log("Buena suerte charlie")
-
-    // };
+  
     return (
         <Animated.ScrollView
             ref={scrollViewRef}

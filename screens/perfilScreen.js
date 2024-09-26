@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
-import Navigation from '../navigation/navigationTab';
+
 
 
 const PerfilScreen= () => {
@@ -14,8 +14,16 @@ const PerfilScreen= () => {
                 <Image source={require('../assets/logoappc.png')} style={styles.img}/>
                 </View>
             <View style={styles.body}>
-                <Text style={styles.cartel}>PERFIL</Text>
+                <Image source={require('../assets/person.png')} style={styles.iconPerfil}/>
+                <Text style={styles.text}>Nombre y Apellido</Text>
+               
+                <Text style={styles.text}>MIS ENTRADAS</Text>
+                <Button
+                title='Peliculas'
+                />
+           
             </View>
+            
             
         </ScrollView>
         
@@ -48,5 +56,14 @@ const styles = StyleSheet.create({
         height: 180,
         width: 180,
         marginLeft: 120,
-    }
+    },
+    iconPerfil:{
+        width: 100,
+        height: 100,
+        marginLeft: 150,
+    },
+    text:{
+        color: '#ffffff',
+        fontSize: 30,
+    },
 });

@@ -1,39 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
 const RegistroScreen = () => {
-    const native = useNavigation();
-  return (
-<ScrollView>
+  const native = useNavigation();
 
-  <View style={styles.view1}>
-  <Text style={styles.titulo}>REGISTRATE</Text>
-  <TextInput
-        style={styles.input}
-        placeholder="Correo Electrónico"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Nombre de Usuario"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        secureTextEntry
-      />
-  <View style={styles.viewin}>
-  </View>
-  </View>
-  <View style={styles.view2}>
-    <View style={styles.boton}>
-    <Button title='REGISTRARME'
-        onPress={() => native.navigate("Login")}
+  const [correo, setCorreo] = useState("")
+  const [nombre, setNombre] = useState("")
+  const [password, setPass] = useState("")
+
+  const registrarse = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(correo, password)
+      .then((response) => {
+        const uid = response.user.uid
+        const data = {
+          id: uid,
+          email,
+          fullName
+        }
+        /* const usersRef = firebase.firestore().collection('users')
+        usersRef
+          .doc(uid)
+          .set(data)
+          .then(() => {
+            navigation.navigate('Home', { user: data })
+          })
+          .catch((error) => {
+            alert(error)
+          }) */
+      })
+      .catch((error) => {
+        alert(error)
+      })
+  }
+  return (
+    <ScrollView>
+
+      <View style={styles.view1}>
+        <Text style={styles.titulo}>REGISTRATE</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Correo Electrónico"
+          onChangeText={(e) => setCorreo(e)}
         />
-    </View>
-  </View>
-</ScrollView>
+        <TextInput
+          style={styles.input}
+          placeholder="Nombre de Usuario"
+          onChangeText={(e) => setNombre(e)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          secureTextEntry
+          onChangeText={(e) => setPass(e)}
+        />
+        <View style={styles.viewin}>
+        </View>
+      </View>
+      <View style={styles.view2}>
+        <View style={styles.boton}>
+          <Button title='REGISTRARME'
+            onPress={() => registrarse()}
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 export default RegistroScreen;
