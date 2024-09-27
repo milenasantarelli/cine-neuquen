@@ -32,4 +32,10 @@ añada lo faltante: (CAMBIAR RUTA DE "PantallaPrincipal")
 reanimated". Cualquier cosa que se necesite sumar avísenme y lo edito.
 
 
+* como cambiar de rama:
+git switch nombre de la rama
+
+* para subir cambios a las distintas ramas:
+git push origin nombre de la rama
+
 

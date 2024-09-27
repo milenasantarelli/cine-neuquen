@@ -8,27 +8,17 @@ const auth = getAuth(appFirebase)
 
 
 export default function LoginScreen(props) {
-
-  const navigation = useNavigation();
+ 
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  const logueo = async () => {
+  const logueo = async()=>{
     try {
       await signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          console.log(user)
-          navigation.navigate('Principal')
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage)
-        });
+      Alert.alert('Iniciando Sesion', 'Accediendo...')
+      props.navigation.navigate('Principal')
+      
     } catch (error) {
       console.log(error);
     }
@@ -36,27 +26,27 @@ export default function LoginScreen(props) {
 
   return (
     <ScrollView>
-      <View style={style.view1}>
+    <View style={style.view1}>
         <Text style={style.titulo}>LOGIN</Text>
-        <View style={style.inputs}>
-          <TextInput style={style.input}
-            placeholder="Correo Electrónico"
-            onChangeText={(text) => setEmail(text)}
-          />
-          <TextInput style={style.input}
-            placeholder="Contraseña"
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-          />
-        </View>
-      </View>
-      <View style={style.view2}>
-        <View style={style.boton}>
-          <TouchableOpacity onPress={logueo}>
-            <Text>Sing in</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+    <View style={style.inputs}>
+      <TextInput style={style.input}
+        placeholder="Correo Electrónico"
+        onChangeText={(text)=> setEmail(text)}
+      />
+      <TextInput style={style.input}
+        placeholder="Contraseña"
+        onChangeText={(text)=> setPassword(text)}
+        secureTextEntry={true}
+      />
+    </View>
+    </View>
+    <View style={style.view2}>
+    <View style={style.boton}>
+      <TouchableOpacity onPress={logueo}>
+        <Text>Sing in</Text>
+      </TouchableOpacity>
+    </View>
+    </View>
     </ScrollView>
   );
 }
@@ -90,10 +80,10 @@ const style = StyleSheet.create({
     marginTop: 150,
   },
   titulo: {
-    fontSize: 40,
-    color: '#fff',
-    marginLeft: 140,
-    marginTop: 50,
+      fontSize: 40,
+      color: '#fff',
+      marginLeft: 140,
+      marginTop: 50,
   },
   view2: {
     justifyContent: 'center',

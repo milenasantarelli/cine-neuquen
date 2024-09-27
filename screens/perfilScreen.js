@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 
 
 const PerfilScreen = () => {
+
+    const navigation = useNavigation();
 
     return (
 
@@ -19,7 +21,8 @@ const PerfilScreen = () => {
 
                 <Text style={styles.text}>MIS ENTRADAS</Text>
                 <Button
-                    title='Peliculas'
+                    title='Mis peliculas'
+                    onPress={()=> navigation.navigate('Mis entradas')}
                 />
 
             </View>
