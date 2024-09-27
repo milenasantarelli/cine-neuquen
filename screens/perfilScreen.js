@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
-import Navigation from '../navigation/navigationTab';
+// import Navigation from '../navigation/navigationTab';
 
 
 const PerfilScreen= () => {

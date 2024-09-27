@@ -5,11 +5,12 @@ import {
   Text,
   View,
   Image,
-  Platform,
   StatusBar,
   SafeAreaView,
+  Pressable,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import MenuFechaHora from "../assets/components/menuFechas";
 
 export default function MovieDetails({ route }) {
   const navigation = useNavigation();
@@ -24,65 +25,161 @@ export default function MovieDetails({ route }) {
       </Text>
     );
   } else {
+    //función del boton que lleva al formulario de compra
+    const BuyTickets = (item) => {
+      //Provisorio. Para verificar que se haya tomado el elemento a pasar
+      console.log(item);
+      navigation.navigate("", { item });
+    };
+
     return (
-      <ScrollView vertical style={styles.container}>
-        <SafeAreaView>
-          <View style={styles.cont}>
+      <SafeAreaView>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="#000"
+          translucent={true}
+          style={{ display: "block" }}
+        ></StatusBar>
+
+        <ScrollView
+          vertical
+          contentContainerStyle={styles.contentContainer}
+          style={styles.container}
+        >
+          {/* header */}
+          <View style={styles.header}>
             <Image
               source={require("../assets/logoappc.png")}
               style={styles.img}
             />
           </View>
 
+          <MenuFechaHora/>
+
+          {/* detalles de la película */}
           <View style={styles.movieContainer}>
-            <Text style={styles.movieTitle}>{item.nombre}</Text>
+            {/* título */}
+            <View>
+              <Text style={styles.movieTitle}>{item.nombre}</Text>
+            </View>
+
+            {/* portada */}
             <Image
               style={styles.portadaMovie}
               source={{ uri: item.image }}
               resizeMode="contain"
             />
-            <Text style={{color: "#fff"}}>Sipnosis:</Text>
+
+            {/* sipnosis */}
+            <View style={styles.textContainer}>
+              <View style={styles.tecnicalData}>
+                <Text style={styles.movieText}>Clasificación:</Text>
+                <Text style={styles.movieText}>Duración</Text>
+                <Text style={styles.movieText}>Categoría:</Text>
+              </View>
+              <View style={styles.sipnosisContainer}>
+                <Text style={styles.movieText}>Sipnosis:{item.sipnosis}</Text>
+              </View>
+            </View>
           </View>
-        </SafeAreaView>
-      </ScrollView>
+
+          {/* botón de compra */}
+          <View style={styles.button}>
+            <Pressable onPress={BuyTickets}>
+              <Text style={styles.buttonText}>Comprar entradas</Text>
+            </Pressable>
+          </View>
+          
+          {/* <MenuFechaHora/> */}
+          
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  movieTitle: {
-    color: "#fff",
-    fontSize: 60,
-    textTransform: "uppercase",
-    
+  contentContainer: {
+    alignItems: "center",
   },
   container: {
-    backgroundColor: "#10152f",
-    // width: "auto",
-    // height: 900,
-  },
-  movieContainer: {
-    display: "flex",
-    alignItems: "center",
-    margin: "10%",
+    backgroundColor: "#000",
+    // display: 'flex',
+    height: "100%",
+
+    // borderWidth: 3,
+    // borderColor: "#00bf63",
+    // borderStyle: "dotted",
   },
 
-  cont: {
-    backgroundColor: "#384358",
+  movieContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    width: "100%",
+    height: 500,
+
+    // borderWidth: 1,
+    // borderColor: "#fff",
+    // borderStyle: "dotted",
+  },
+  movieTitle: {
+    color: "#fff",
+    fontSize: 35,
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    fontWeight: "bold",
+    marginTop: "10%",
+  },
+  portadaMovie: {
+    width: "80%",
+    height: "40%",
+    borderRadius: 13,
+    margin: "5%",
+    // shadowRadius: 3,
+    // shadowColor: '#fff',
+  },
+  textContainer: {
+    maxWidth: '80%',
+  },
+  tecnicalData: {
+    maxWidth: '65%',
+  },
+  movieText: {
+    color: "#fff",
+    fontStyle: "italic",
+  },
+  sipnosisContainer: {
+    //
+  },
+
+  header: {
+    backgroundColor: "#690101",
     height: 100,
+    width: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   img: {
     height: 80,
     width: 80,
     padding: 5,
-    // marginLeft: 120,
   },
-  portadaMovie: {
-    width: "100%",
-    height: 100,
-    borderRadius: "4px",
+  button: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    backgroundColor: "#e5a00f",
+    width: 190,
+    height: 45,
+    margin: 20,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000",
   },
 });
