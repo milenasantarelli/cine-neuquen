@@ -88,7 +88,7 @@ const CuadradoImagenCarrusel = ({ data, onImagePress, autoPlay }) => {
                 }
 
                 return (
-                    <Pressable key={index} onPress={() => navigation.nagivate('MovieDetails', {item})}>
+                    <Pressable key={index} onPress={() => onImagePress(item)}>
                         <View style={{ width: SIZE }} key={index}>
                             <Animated.View style={[styles.imageContainer, style]}>
                                 <Image

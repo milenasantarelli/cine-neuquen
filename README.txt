@@ -32,4 +32,5 @@ añada lo faltante: (CAMBIAR RUTA DE "PantallaPrincipal")
 reanimated". Cualquier cosa que se necesite sumar avísenme y lo edito.
 
 
-
+26/09
+npm install react-native-reanimated@latest

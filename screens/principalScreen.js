@@ -24,32 +24,31 @@ const PrincipalScreen = () => {
         { id: 4, nombre: "Indianna Jones", image: 'https://lh3.googleusercontent.com/proxy/EPjHwmLhaIJBNMx5DYkM296CgVXoAG37ybDQXGw3P2vP8uAnQ-wQE4I8Xnqt_5I-Vebo7-J7iUcbi68FEyaKUH2dP6sWxH-lEF_qOgChwcZ0SRXlhuQm-3xI_FsIkwg7-d29fAn5MH9lXEI40H7QshW4H2ztxCJFOf2G6uCIWniha3ZhMBafl1sCCXF2NSNXL6Xl-xRrZd0O4Q' },
     ];
 
-    const onImagePress = (index) => {
-        console.log(index);
-        const itemSeleccionado = data[index];
-        navigation.navigate("MovieDetails", { item: itemSeleccionado });
+    const onImagePress = (item) => {
+        console.log(item);
+        // const itemSeleccionado = data[index];
+        navigation.navigate("DetallesPelicula", { item });
     }
 
     return (
     <ScrollView style={styles.container}>
         <SafeAreaView >
-             <View style={styles.cont}>
-            <Image source={require('../assets/logoappc.png')} style={styles.img}/>
+            <View style={styles.cont}>
+                <Image source={require('../assets/logoappc.png')} style={styles.img}/>
             </View>
             <View style={styles.body}>
-           
-           
-      <View style={styles.concarru}>
-            <View style={styles.carouselContainer}>
-                <CuadradoImagenCarrusel
-                    data={data}
-                    autoPlay={true}
-                    pagination={true}
-                    onImagePress={onImagePress}
-                />
-            
+                 
+                <View style={styles.concarru}>
+                    <View style={styles.carouselContainer}>
+                        <CuadradoImagenCarrusel
+                            data={data}
+                            autoPlay={true}
+                            pagination={true}
+                            onImagePress={onImagePress}
+                        />
+                    </View>
                 </View>
-      </View>
+
             </View>
         </SafeAreaView>
     </ScrollView>
