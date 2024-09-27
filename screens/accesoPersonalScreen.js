@@ -26,7 +26,9 @@ const AccesoAdminScreen = () => {
     </View>
     <View style={style.view2}>
         <View style={style.boton}>
-            <Button title='ENTRAR'/>
+            <Button title='ENTRAR'
+            onPress={()=> native.navigate("Base de Datos")}
+            />
         </View>    
     </View>
     </ScrollView>
