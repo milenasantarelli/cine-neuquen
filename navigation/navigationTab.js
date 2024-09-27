@@ -17,28 +17,28 @@ function MyTabs() {
           if (route.name === 'Perfil') {
             iconName = require('../assets/person.png');
           } else if (route.name === 'Principal') {
-            iconName = require('../assets/home.png');  
+            iconName = require('../assets/home.png');
           }
 
-         
+
           return <Image source={iconName} style={{ width: 30, height: 30 }} />;
         },
-        tabBarActiveTintColor: 'tomato', 
+        tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarShowLabel: false,
       })}
     >
-       <Tab.Screen name="Principal" component={PrincipalScreen}/>
+      <Tab.Screen name="Principal" component={PrincipalScreen} />
       <Tab.Screen name="Perfil" component={PerfilScreen} />
-     
+
     </Tab.Navigator>
   );
 }
 
 export default function TabNavigation() {
   return (
-  
-      <MyTabs />
-   
+
+    <MyTabs />
+
   );
 }
