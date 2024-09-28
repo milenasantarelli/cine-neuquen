@@ -28,9 +28,10 @@ const NavigationStack = () => {
         <Stack.Screen name="Registro" component={RegistroScreen} />
 
         <Stack.Screen name="RegisterLogin" component={RegisterScreen} options={{ title: 'Registro de Login' }} />
+      
 
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
-        
+      
         <Stack.Screen name="Tabs" component={TabNavigation} options={{ headerShown: false }} />
 
         <Stack.Screen name="Principal" component={PrincipalScreen} options={{ title: 'Pantalla Principal' }} />
