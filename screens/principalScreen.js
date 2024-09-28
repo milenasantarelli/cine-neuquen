@@ -5,7 +5,9 @@ import {
     StatusBar,
     View,
     Image,
-    ScrollView
+    ScrollView,
+    Button,
+    Text
 } from 'react-native';
 import React from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
@@ -41,8 +43,28 @@ const PrincipalScreen = () => {
                         />
                     </View>
                 </View>
+                <View>
+                <Text style={styles.cartel}>Menu</Text>
+                <Button
+                title='Perfil'
+                onPress={()=> navigation.navigate('Perfil')}
+                />
+
+                <Button
+                title='Comprar entrada'
+                onPress={()=> navigation.navigate('Comprar entrada')}
+                />
+
+                <Button
+                title='FormCompra'
+                onPress={()=> navigation.navigate('FormCompra')}
+                />
+                </View>
+      </View>
+
 
             </View>
+
         </SafeAreaView>
     </ScrollView>
     );
