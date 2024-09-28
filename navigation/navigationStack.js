@@ -8,6 +8,11 @@ import LoginScreen from "../screens/loginScreen";
 import TabNavigation from "./navigationTab";
 import AccesoAdminScreen from "../screens/accesoPersonalScreen";
 import MovieDetails from "../screens/movieDetails";
+import BdScreen from "../screens/BD_Screen";
+import ComprarEntradaScreen from "../screens/comprarEntrada";
+import FormularioCompraScreen from "../screens/formularioCompra";
+import MisEntradasScreen from "../screens/misEntradas";
+import PerfilScreen from "../screens/perfilScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +38,16 @@ const NavigationStack = () => {
         <Stack.Screen name="Administrador" component={AccesoAdminScreen} options={{ title: 'Acceso Administrador' }} />
 
         <Stack.Screen name="DetallesPelicula" component={MovieDetails} options={{ headerShown: false}}/>
+
+        <Stack.Screen name="Base de Datos" component={BdScreen} options={{ title: 'Base de Datos' }} />
+
+        <Stack.Screen name="Comprar entrada" component={ComprarEntradaScreen} options={{ title: 'Comprar entrada' }} />
+
+        <Stack.Screen name="FormCompra" component={FormularioCompraScreen} options={{ title: 'Formulario Compra' }} />
+
+        <Stack.Screen name="Mis entradas" component={MisEntradasScreen} options={{ title: 'Mis entradas' }} />
+        
+        <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

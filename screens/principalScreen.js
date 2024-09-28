@@ -5,7 +5,9 @@ import {
     StatusBar,
     View,
     Image,
-    ScrollView
+    ScrollView,
+    Button,
+    Text
 } from 'react-native';
 import React from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
@@ -26,7 +28,6 @@ const PrincipalScreen = () => {
 
     const onImagePress = (item) => {
         console.log(item);
-        // const itemSeleccionado = data[index];
         navigation.navigate("DetallesPelicula", { item });
     }
 
@@ -48,8 +49,28 @@ const PrincipalScreen = () => {
                         />
                     </View>
                 </View>
+                <View>
+                <Text style={styles.cartel}>Menu</Text>
+                <Button
+                title='Perfil'
+                onPress={()=> navigation.navigate('Perfil')}
+                />
 
-            </View>
+                <Button
+                title='Comprar entrada'
+                onPress={()=> navigation.navigate('Comprar entrada')}
+                />
+
+                <Button
+                title='FormCompra'
+                onPress={()=> navigation.navigate('FormCompra')}
+                />
+                </View>
+      </View>
+
+
+
+
         </SafeAreaView>
     </ScrollView>
     );

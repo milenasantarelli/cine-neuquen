@@ -32,5 +32,17 @@ añada lo faltante: (CAMBIAR RUTA DE "PantallaPrincipal")
 reanimated". Cualquier cosa que se necesite sumar avísenme y lo edito.
 
 
+* como cambiar de rama:
+git switch nombre de la rama
+
+* para subir cambios a las distintas ramas:
+git push origin nombre de la rama
+
+* como cambiar de rama:
+git switch nombre de la rama
+
+* para subir cambios a las distintas ramas:
+git push origin nombre de la rama
+
 26/09
-npm install react-native-reanimated@latest
+npm install react-native-reanimated@latest 
