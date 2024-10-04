@@ -1,75 +1,156 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import fechasData from "../data/movieDates.json"; // Importa el JSON
+import { View, Text, Pressable, ScrollView, StyleSheet } from "react-native";
+import fechasData from "../data/movieDates.json";
 
-const MenuFechaHora = () => {
+const MenuFechaHora = ({ seleccionarFechaYHora }) => {
+  //Guardo fecha y horario seleccionado
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
-  const [horariosDisponibles, setHorariosDisponibles] = useState([]);
-  const [menuDesplegado, setMenuDesplegado] = useState(false);
   const [horarioSeleccionado, setHorarioSeleccionado] = useState("");
 
+  const [horariosDisponibles, setHorariosDisponibles] = useState([]);
+  const [menuDesplegado, setMenuDesplegado] = useState(false); //menu de días
+  const [menuHorariosDesplegado, setMenuHorariosDesplegado] = useState(false); //menú de hrs
+
+  //Función para seleccionar fecha
   const seleccionarFecha = (fecha, tipoDeSala) => {
-    setFechaSeleccionada(fecha);
-    setHorariosDisponibles(tipoDeSala);
-    setMenuDesplegado(false); // Contraer el menú después de seleccionar
+    console.log("Valor inicial menú (fechas): ", menuDesplegado);
+    setFechaSeleccionada(fecha); //Actualizo la fecha a guardar
+    setHorariosDisponibles(tipoDeSala); //Almacena hrs disp para fecha seleccionada
+    //alterno menús
+    setMenuDesplegado(false);
+    setMenuHorariosDesplegado(true);
   };
 
+  //Función para seleccionar horario
   const seleccionarHorario = (horario) => {
-    setHorarioSeleccionado(horario);
+    console.log("Valor inicial menú (hrs): ", menuDesplegado);
+    setHorarioSeleccionado(horario); //Actualizo la hr a guardar
+    setMenuHorariosDesplegado(false); //contraigo menús
+    seleccionarFechaYHora(fechaSeleccionada, horario);
   };
 
+  //Renderizado
   return (
-    <View>
-      {/* Botón para desplegar o contraer el menú */}
-      <TouchableOpacity onPress={() => setMenuDesplegado(!menuDesplegado)}>
-        <Text>{fechaSeleccionada || "Selecciona una fecha"}</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      {/* Botón para desplegar o contraer menú */}
+      <Pressable
+        onPress={() => {
+          //cerrar menús abiertos si se presiona
+          if (menuDesplegado || menuHorariosDesplegado) {
+            if (menuDesplegado) {
+              setMenuDesplegado(false);
+            }
+            if (menuHorariosDesplegado) {
+              setMenuHorariosDesplegado(false);
+            }
+          } else { //si ninguno esta abierto, abrir el principal
+            setMenuDesplegado(true);
+          }
+        }}
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Seleccione una función</Text>
+      </Pressable>
 
       {/* Menú desplegable para seleccionar la fecha */}
       {menuDesplegado && (
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
           {fechasData.fechas.map((fecha, index) => {
             const fechaKey = Object.keys(fecha)[0];
             const tipoDeSala = fecha[fechaKey][0].tipoDeSala;
+
             return (
-              <TouchableOpacity
+              <Pressable
                 key={index}
                 onPress={() => seleccionarFecha(fechaKey, tipoDeSala)}
+                style={styles.dateItem}
               >
-                <Text>{fechaKey}</Text>
-              </TouchableOpacity>
+                <Text style={styles.dateText}>{fechaKey}</Text>
+              </Pressable>
             );
           })}
         </ScrollView>
       )}
 
       {/* Mostrar los horarios disponibles según la fecha seleccionada */}
-      {fechaSeleccionada && (
-        <View>
-          <Text>Horarios disponibles:</Text>
+      {fechaSeleccionada && menuHorariosDesplegado && (
+        <View style={styles.horariosContainer}>
+          <Text style={styles.horariosTitle}>Horarios disponibles:</Text>
+
           {Object.keys(horariosDisponibles).map((sala, index) => (
-            <View key={index}>
-              <Text>{sala}</Text>
+            <View key={index} style={styles.salaContainer}>
+              <Text style={styles.salaText}>{sala}</Text>
               {horariosDisponibles[sala].map((horario, idx) => (
-                <TouchableOpacity
+                <Pressable
                   key={idx}
                   onPress={() => seleccionarHorario(horario)}
+                  style={styles.horarioItem}
                 >
-                  <Text>{horario}</Text>
-                </TouchableOpacity>
+                  <Text style={styles.horarioText}>{horario}</Text>
+                </Pressable>
               ))}
             </View>
           ))}
         </View>
       )}
-
-      {/* Mostrar la fecha y hora seleccionada */}
-      {horarioSeleccionado && (
-        <Text>
-          Fecha y hora seleccionada: {fechaSeleccionada} - {horarioSeleccionado}
-        </Text>
-      )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#e5a00f",
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: "#e5a00f",
+    padding: 10,
+    borderRadius: 5,
+    borderColor: "#000",
+    borderWidth: 1,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#000",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  scrollView: {
+    marginTop: 10,
+    maxHeight: 150,
+  },
+  dateItem: {
+    padding: 10,
+    backgroundColor: "#e5a00f",
+    marginBottom: 5,
+    borderRadius: 5,
+  },
+  dateText: {
+    fontSize: 16,
+  },
+  horariosContainer: {
+    margin: 10,
+  },
+  horariosTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  salaContainer: {
+    marginTop: 5,
+  },
+  salaText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  horarioItem: {
+    padding: 8,
+    backgroundColor: "#e5a00f",
+    marginBottom: 5,
+    borderRadius: 5,
+  },
+  horarioText: {
+    fontSize: 16,
+  },
+});
+
 export default MenuFechaHora;
