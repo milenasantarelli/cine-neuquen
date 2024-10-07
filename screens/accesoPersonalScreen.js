@@ -28,6 +28,7 @@ const AccesoAdminScreen = () => {
         <View style={style.boton}>
             <Button title='ENTRAR'
             onPress={()=> native.navigate("Base de Datos")}
+                color='#EEA816'
             />
         </View>    
     </View>
@@ -54,7 +55,7 @@ view2: {
     alignItems: 'center',
     width: 'auto',
     height: 262,
-    backgroundColor: '#0b1442',
+    backgroundColor: '#000000',
 },
 titulo: {
     fontSize: 40,

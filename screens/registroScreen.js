@@ -64,6 +64,7 @@ const RegistroScreen = () => {
         <View style={styles.boton}>
           <Button title='REGISTRARME'
             onPress={() => registrarse()}
+                color='#EEA816'
           />
         </View>
       </View>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 'auto',
     height: 262,
-    backgroundColor: '#0b1442',
+    backgroundColor: '#000000',
   },
   boton: {
     width: 250,

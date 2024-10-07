@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-       
     },
     text: {
         textAlign: 'center',
@@ -86,15 +85,14 @@ const styles = StyleSheet.create({
     },
     carouselContainer: {
         marginBottom: 20,
-        
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#000000',
         width: 'auto',
         height: 900,
     },
     cont: {
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
     },
     cartel: {
@@ -112,3 +110,4 @@ const styles = StyleSheet.create({
       paddingTop:30,
     },
 });
+
