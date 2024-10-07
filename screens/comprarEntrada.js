@@ -20,11 +20,7 @@ const ComprarEntradaScreen = () => {
                     <Text style={styles.texto}>Fecha :</Text>
                     <Text style={styles.texto}>Entrada :</Text>
                 </View>
-                <Text style={styles.title}>Billetera Virtual</Text>
-                <View style={styles.Cont2}>
-                    <Text style={styles.text2}>Alias :</Text>
-                    <Text style={styles.text2}>QR :</Text>
-                </View>
+                <Text style={styles.title}>Billetera Virtual Mercado Pago</Text>
                 <View style={styles.boton}>
                     <Button title='PAGAR'/>
                 </View>
@@ -62,7 +58,7 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#10152f',
         width: 'auto',
-        height: 1200,
+        height: 1000,
     },
     texto :{
         display: 'flex',
