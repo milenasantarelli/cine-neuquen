@@ -1,19 +1,9 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  ScrollView,
-  Image,
-  SafeAreaView,
-} from "react-native";
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
 
-const ComprarEntradaScreen = ({ route }) => {
-  const { item, fecha, horario, cantidadEntradas } = route.params || {};
-  //calcular precio
-  const precioEntrada = 1575;
-  const totalAPagar = precioEntrada * cantidadEntradas;
+//Esta pantalla es de la descripción de la compra
+
+const ComprarEntradaScreen = () => {
 
     return (
         <ScrollView>
@@ -37,34 +27,6 @@ const ComprarEntradaScreen = ({ route }) => {
         </ScrollView>
 
     );
-}
-  return (
-    <SafeAreaView>
-      <View style={styles.cont}>
-        <Image source={require("../assets/logoappc.png")} style={styles.img} />
-      </View>
-      <ScrollView style={styles.body}>
-        <View>
-          <Text style={styles.comp}>Detalles de la compra</Text>
-          <View style={styles.Cont2}>
-            <Text style={styles.texto}>Película: {item.nombre}</Text>
-            <Text style={styles.texto}>Cantidad Entradas: {cantidadEntradas}</Text>
-            <Text style={styles.texto}>Fecha: {fecha}</Text>
-            <Text style={styles.texto}>Hora: {horario} hrs</Text>
-            <Text style={styles.texto}>Total: ${totalAPagar}</Text>
-          </View>
-          <Text style={styles.title}>Billetera Virtual</Text>
-          <View style={styles.Cont2}>
-            <Text style={styles.text2}>Alias :</Text>
-            <Text style={styles.text2}>QR :</Text>
-          </View>
-          <View style={styles.boton}>
-            <Button title="IR A PAGAR" />
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
 };
 
 export default ComprarEntradaScreen;
