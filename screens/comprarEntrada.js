@@ -19,11 +19,9 @@ const ComprarEntradaScreen = () => {
                     <Text style={styles.texto}>Fecha :</Text>
                     <Text style={styles.texto}>Entrada :</Text>
                 </View>
-                <Text style={styles.title}>Billetera Virtual</Text>
-                <View style={styles.Cont2}>
-                    <Text style={styles.text2}>Alias :</Text>
-                    <Text style={styles.text2}>QR :</Text>
-                </View>
+                <Text style={styles.title}>Billetera Virtual Mercado Pago</Text>
+              
+            
                 <View style={styles.boton}>
                     <Button title='PAGAR'/>
                 </View>
@@ -46,11 +44,11 @@ const styles = StyleSheet.create({
         marginLeft: 120,
     },
     cont: {
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
     },
     Cont2 :{
-        backgroundColor: '#0d4f83',
+        backgroundColor: '#EEA816',
         display: 'flex',
         marginLeft: 30,
         width: 350,
@@ -59,7 +57,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#000000',
         width: 'auto',
         height: 1200,
     },
