@@ -6,6 +6,9 @@ import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 
 const RegisterScreen = () => {
   const native = useNavigation();
+
+  
+
   return (
     <ScrollView>
         

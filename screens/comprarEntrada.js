@@ -4,6 +4,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView
 //Esta pantalla es de la descripción de la compra
 
 const ComprarEntradaScreen = () => {
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
+
+//Esta pantalla es de la descripción de la compra
+
+const ComprarEntradaScreen = () => {
 
     return (
         <ScrollView>

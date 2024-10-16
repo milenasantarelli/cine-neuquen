@@ -1,50 +1,33 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, ScrollView, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import appFirebase from '../credenciales'; 
 
+const auth = getAuth(appFirebase);
 
-const RegistroScreen = () => {
-  const native = useNavigation();
+export default function RegisterScreen(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [correo, setCorreo] = useState("")
-  const [nombre, setNombre] = useState("")
-  const [password, setPass] = useState("")
+  const registro = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      Alert.alert('Registro exitoso', 'Usuario creado correctamente');
+      props.navigation.navigate('Principal');  
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Error', error.message);
+    }
+  };
 
-  const registrarse = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(correo, password)
-      .then((response) => {
-        const uid = response.user.uid
-        const data = {
-          id: uid,
-          email,
-          fullName
-        }
-        /* const usersRef = firebase.firestore().collection('users')
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate('Home', { user: data })
-          })
-          .catch((error) => {
-            alert(error)
-          }) */
-      })
-      .catch((error) => {
-        alert(error)
-      })
-  }
   return (
     <ScrollView>
-
       <View style={styles.view1}>
         <Text style={styles.titulo}>REGISTRATE</Text>
         <TextInput
           style={styles.input}
           placeholder="Correo Electrónico"
-          onChangeText={(e) => setCorreo(e)}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.input}
@@ -55,23 +38,19 @@ const RegistroScreen = () => {
           style={styles.input}
           placeholder="Contraseña"
           secureTextEntry
-          onChangeText={(e) => setPass(e)}
+          onChangeText={(text) => setPassword(text)}
         />
-        <View style={styles.viewin}>
-        </View>
       </View>
       <View style={styles.view2}>
         <View style={styles.boton}>
-          <Button title='REGISTRARME'
-            onPress={() => registrarse()}
-                color='#EEA816'
-          />
+          <TouchableOpacity onPress={registro} style={styles.touchcolor}>
+            <Text>Registrarse</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
   );
 }
-export default RegistroScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -81,23 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   view1: {
-
     width: 'auto',
     height: 550,
     backgroundColor: '#8d0c1b',
-  },
-
-  view2: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 'auto',
-    height: 262,
-    backgroundColor: '#000000',
-  },
-  boton: {
-    width: 250,
-    marginTop: -60,
   },
   input: {
     height: 50,
@@ -111,8 +76,19 @@ const styles = StyleSheet.create({
     marginLeft: 50,
     fontFamily: 'Arial',
   },
-  viewin: {
-    marginTop: 100,
+  view2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'auto',
+    height: 262,
+    backgroundColor: '#000000',
+  },
+  boton: {
+    width: 250,
+    marginTop: -60,
+  },
+  touchcolor: {
+    backgroundColor: '#EEA816',
   },
   titulo: {
     fontSize: 40,
@@ -121,5 +97,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 50,
   },
+  viewin: {
+    marginTop: 100,
+  },
 });
-
