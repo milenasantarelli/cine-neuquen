@@ -43,7 +43,7 @@ export default function LoginScreen(props) {
     <View style={style.view2}>
     <View style={style.boton}>
       <TouchableOpacity onPress={logueo} style={style.touchcolor}>
-        <Text>Sing in</Text>
+        <Text style={style.touchtext}>Sing in</Text>
       </TouchableOpacity>
     </View>
     </View>
@@ -101,6 +101,15 @@ const style = StyleSheet.create({
   },
   touchcolor:{
     backgroundColor:'#EEA816',
+    width: 250,
+    height: 30,
+    
+  },
+  touchtext:{
+    fontSize:16,
+    color:'#fff',
+    textAlign:'center',
+    fontWeight:'bold',
   },
 });
 

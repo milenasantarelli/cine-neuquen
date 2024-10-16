@@ -16,7 +16,7 @@ import data from '../assets/data/movies.json';
 
 
 
-const PrincipalScreen = () => {
+const PeliculasScreen = () => {
 
     const navigation = useNavigation();
 
@@ -32,39 +32,26 @@ const PrincipalScreen = () => {
                     <Image source={require('../assets/logoappc.png')} style={styles.img} />
                 </View>
                 <View style={styles.body}>
+                    <Image
+                    source={require('../assets/Furiosa.jpg')}
+                    />
 
-                    <View style={styles.concarru}>
-                        <View style={styles.carouselContainer}>
-                            <CuadradoImagenCarrusel
-                                data={data}
-                                autoPlay={true}
-                                pagination={true}
-                                onImagePress={onImagePress}
-                            />
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={styles.cartel}>Menu</Text>
-                        <Button
-                            title='Perfil'
-                            onPress={() => navigation.navigate('Perfil')}
-                        />
+                    <Image
+                    
+                    />
 
-                        <Button
-                            title='Comprar entrada'
-                            onPress={() => navigation.navigate('Comprar entrada')}
-                        />
+                    <Image
+                    
+                    />
 
-                        <Button
-                            title='FormCompra'
-                            onPress={() => navigation.navigate('FormCompra')}
-                        />
+                    <Image
 
-                        <Button
-                            title='PeliculasScreen'
-                            onPress={() => navigation.navigate('PeliculasScreen')}
-                        />
-                    </View>
+                    />
+
+                    <Image
+
+                    />
+
                 </View>
 
 
@@ -75,7 +62,7 @@ const PrincipalScreen = () => {
     );
 };
 
-export default PrincipalScreen;
+export default PeliculasScreen;
 
 const styles = StyleSheet.create({
     container: {
