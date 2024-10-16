@@ -13,6 +13,7 @@ import ComprarEntradaScreen from "../screens/comprarEntrada";
 import FormularioCompraScreen from "../screens/formularioCompra";
 import MisEntradasScreen from "../screens/misEntradas";
 import PerfilScreen from "../screens/perfilScreen";
+import PeliculasScreen from "../screens/peliculasScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,8 @@ const NavigationStack = () => {
         <Stack.Screen name="Mis entradas" component={MisEntradasScreen} options={{ title: 'Mis entradas' }} />
         
         <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
+
+        <Stack.Screen name="PeliculasScreen" component={PeliculasScreen} options={{ title: 'Peliculas' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

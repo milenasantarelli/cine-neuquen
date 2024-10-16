@@ -44,7 +44,7 @@ export default function RegisterScreen(props) {
       <View style={styles.view2}>
         <View style={styles.boton}>
           <TouchableOpacity onPress={registro} style={styles.touchcolor}>
-            <Text>Registrarse</Text>
+            <Text style={styles.touchtext}>Registrarse</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -87,8 +87,17 @@ const styles = StyleSheet.create({
     width: 250,
     marginTop: -60,
   },
-  touchcolor: {
-    backgroundColor: '#EEA816',
+  touchcolor:{
+    backgroundColor:'#EEA816',
+    width: 250,
+    height: 30,
+    
+  },
+  touchtext:{
+    fontSize:16,
+    color:'#fff',
+    textAlign:'center',
+    fontWeight:'bold',
   },
   titulo: {
     fontSize: 40,
