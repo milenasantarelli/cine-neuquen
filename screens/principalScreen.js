@@ -58,6 +58,10 @@ const PrincipalScreen = () => {
                                 title='FormCompra'
                                 onPress={()=> navigation.navigate('FormCompra')}
                             />
+                             <Button
+                                title='Peliculas'
+                                onPress={()=> navigation.navigate('Peliculas')}
+                            />
                         </View>
                     </View>
                 </SafeAreaView>
@@ -66,55 +70,7 @@ const PrincipalScreen = () => {
        
             <FakeTabs />
         </View>
-        <ScrollView style={styles.container}>
-            <SafeAreaView >
-                <View style={styles.cont}>
-                    <Image source={require('../assets/logoappc.png')} style={styles.img} />
-                </View>
-                <View style={styles.body}>
-
-                    <View style={styles.concarru}>
-                        <View style={styles.carouselContainer}>
-                            <CuadradoImagenCarrusel
-                                data={data}
-                                autoPlay={true}
-                                pagination={true}
-                                onImagePress={onImagePress}
-                            />
-                        </View>
-                    </View>
-                    <View>
-                        <Text style={styles.cartel}>Menu</Text>
-                        <Button
-                            title='Perfil'
-                            onPress={() => navigation.navigate('Perfil')}
-                        />
-
-                        <Button
-                            title='Comprar entrada'
-                            onPress={() => navigation.navigate('Comprar entrada')}
-                        />
-
-                        <Button
-                            title='FormCompra'
-                            onPress={() => navigation.navigate('FormCompra')}
-                        />
-
-                        <Button
-                            title='PeliculasScreen'
-                            onPress={() => navigation.navigate('PeliculasScreen')}
-                        />
-                    </View>
-                </View>
-
-
-
-
-            </SafeAreaView>
-        </ScrollView>
-    );
-};
-
+    )}
 export default PrincipalScreen;
 
 const styles = StyleSheet.create({

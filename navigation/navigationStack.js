@@ -50,7 +50,7 @@ const NavigationStack = () => {
         
         <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
 
-        <Stack.Screen name="PeliculasScreen" component={PeliculasScreen} options={{ title: 'Peliculas' }} />
+        <Stack.Screen name="Peliculas" component={PeliculasScreen} options={{ title: 'Peliculas' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
