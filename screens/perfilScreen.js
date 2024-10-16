@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import FakeTabs from '../assets/components/fakeTabs';
 
 
 const PerfilScreen = () => {
@@ -9,8 +10,8 @@ const PerfilScreen = () => {
 
     return (
 
-
-        <ScrollView>
+    <View style={styles.container}>
+        <ScrollView style={styles.scrollContent}>
 
             <View style={styles.cont}>
                 <Image source={require('../assets/logoappc.png')} style={styles.img} />
@@ -29,7 +30,8 @@ const PerfilScreen = () => {
 
 
         </ScrollView>
-
+        <FakeTabs/>
+        </View>
     );
 }
 
@@ -37,8 +39,10 @@ export default PerfilScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: '1px',
-        padding: '20'
+        flex: 1
+    },
+    scrollContent: {
+        paddingBottom: 100, 
     },
     body: {
         backgroundColor: '#10152f',

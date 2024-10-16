@@ -5,7 +5,7 @@ import RegisterScreen from "../screens/registerScreen";
 import PrincipalScreen from "../screens/principalScreen";
 import RegistroScreen from "../screens/registroScreen";
 import LoginScreen from "../screens/loginScreen";
-import TabNavigation from "./navigationTab";
+
 import AccesoAdminScreen from "../screens/accesoPersonalScreen";
 import MovieDetails from "../screens/movieDetails";
 import BdScreen from "../screens/BD_Screen";
@@ -23,7 +23,7 @@ const NavigationStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="RegisterLogin">
-      {/* <Stack.Navigator initialRouteName="Principal"> */}
+    
       
         <Stack.Screen name="Registro" component={RegistroScreen} />
 
@@ -31,7 +31,7 @@ const NavigationStack = () => {
       
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
       
-        <Stack.Screen name="Tabs" component={TabNavigation} options={{ headerShown: false }} />
+       
 
         <Stack.Screen name="Principal" component={PrincipalScreen} options={{ title: 'Pantalla Principal' }} />
 
