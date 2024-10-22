@@ -14,7 +14,6 @@ const FormularioCompraScreen = () => {
             </View>
 
             <View style={styles.body}>
-                <Text style={styles.msj}>Compra exitosa!</Text>
                 <Text style={styles.titulo}>Descripción de la compra</Text>
                 <View style={styles.Cont2}>
                     <Text style={styles.texto}>Título :</Text>
@@ -23,7 +22,7 @@ const FormularioCompraScreen = () => {
                     <Text style={styles.texto}>Hora :</Text>
                 </View>
                 <View style={styles.boton}>
-                    <Button title='IR A MIS ENTRADAS'/>
+                    <Button title='IR A MIS ENTRADAS' color='#EEA816'/>
                 </View>
             </View>
         </ScrollView>
@@ -41,31 +40,40 @@ const styles = StyleSheet.create({
     img:{
         height: 180,
         width: 180,
-        marginLeft: 120,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#000000',
         width: 'auto',
-        height: 900,
+        height: '85%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     boton: {
         width: 250,
-        marginBottom: 30,
-        marginTop: 50,
-        marginLeft: 80,
+        Bottom: '40%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         fontSize: 15,
     },
     cont:{
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     Cont2 :{
-        backgroundColor: '#0d4f83',
+        backgroundColor: '#8d0c1b',
         display: 'flex',
-        marginLeft: 30,
-        width: 350,
-        height: 400,
-        marginTop: 60,
+        justifyContent: 'center',
+        width: 340,
+        height: '50%',
+        marginBottom: '40%',
         borderRadius: 20,
     },
     texto :{
@@ -77,17 +85,14 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     titulo: {
-        display: 'flex',
+        left: 10,
+        bottom: 20,
         fontSize: 35,
         marginTop: 30,
-        marginLeft: -2,
-        color: '#fff',
-    },
-    msj: {
         display: 'flex',
-        fontSize: 20,
-        marginTop: 20,
-        marginLeft: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
         color: '#fff',
     },
+
 });

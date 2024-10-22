@@ -24,14 +24,13 @@ const PerfilScreen = () => {
                 <Button
                     title='Mis peliculas'
                     onPress={()=> navigation.navigate('Mis entradas')}
+                    color='#EEA816' style= {styles.Button}
                 />
-
             </View>
-
 
         </ScrollView>
         <FakeTabs/>
-        </View>
+    </View>
     );
 }
 
@@ -45,13 +44,19 @@ const styles = StyleSheet.create({
         paddingBottom: 100, 
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#000000',
         width: 'auto',
-        height: 722,
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     cont: {
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     cartel: {
         color: '#ffffff',
@@ -62,15 +67,26 @@ const styles = StyleSheet.create({
     img: {
         height: 180,
         width: 180,
-        marginLeft: 120,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     iconPerfil: {
         width: 100,
         height: 100,
-        marginLeft: 150,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '80%'
     },
     text: {
         color: '#ffffff',
         fontSize: 30,
+        bottom: '35%',
+    },
+    Button: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
