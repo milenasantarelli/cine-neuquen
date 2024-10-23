@@ -84,6 +84,9 @@ const style = StyleSheet.create({
     width: 'auto',
     height: 550,
     backgroundColor: '#8d0c1b',
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   input: {
     height: 50,
@@ -94,11 +97,16 @@ const style = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#fff',
     width: 300,
-    marginLeft: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     fontFamily: 'Arial',
   },
   inputs: {
     marginTop: 150,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   titulo: {
     fontSize: 40,
@@ -110,7 +118,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: 262,
+    height: '100%',
     backgroundColor: '#000000',
   },
   boton: {
