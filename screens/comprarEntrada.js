@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginLeft: 120,
     },
     cont: {
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
     },
     Cont2 :{
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#0000000',
         width: 'auto',
         height: 1000,
     },

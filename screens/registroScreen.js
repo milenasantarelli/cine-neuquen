@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: 300,
     marginLeft: 50,
-    fontFamily: 'Arial',
+    
   },
   view2: {
     justifyContent: 'center',

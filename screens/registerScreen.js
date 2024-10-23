@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   },
 
   view1: {
-
     width: 'auto',
     height: 490,
     backgroundColor: '#8d0c1b',
@@ -62,37 +61,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: 262,
+    height: 450,
     backgroundColor: '#000000',
   },
   titulo: {
     fontSize: 90,
     color: '#fff',
-    bottom: 100,
-    marginLeft: 100,
-    marginTop: 100
+    bottom:'10%',
+    textAlign:'center',
+    marginTop: '10%'
   },
   subtitulo: {
     fontSize: 45,
     color: '#fff',
-    bottom: 90,
-    marginLeft: 80,
-    fontFamily: 'arial',
+    textAlign:'center',
+    bottom:'10%'
+   
   },
   subtitulodos: {
     fontSize: 25,
     color: '#fff',
-    bottom: 90,
-    marginLeft: 150,
-    bottom: 90,
+    textAlign:'center',
+    marginBottom:'20%'
   },
   contenido: {
     fontSize: 15,
     color: '#fff',
     textAlign: 'center',
-    marginTop: 20,
     paddingHorizontal: 60,
-    fontFamily: 'arial',
   },
   input2: {
     color: '#fff',
