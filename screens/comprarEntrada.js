@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     },
     cont: {
         backgroundColor: '#8d0c1b',
-        backgroundColor: '#8d0c1b',
         height: 200,
         display: 'flex',
         justifyContent: 'center',
@@ -64,7 +63,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     body: {
-        backgroundColor: '#0000000',
         backgroundColor: '#000000',
         width: 'auto',
         height: '100%',
