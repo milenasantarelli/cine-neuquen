@@ -13,6 +13,7 @@ import React from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
 import { useNavigation } from '@react-navigation/native';
 import data from '../assets/data/movies.json';
+import FakeTabs from '../assets/components/fakeTabs';
 
 
 
@@ -26,6 +27,7 @@ const PeliculasScreen = () => {
     }
 
     return (
+        <View style={styles.container2}>
         <ScrollView style={styles.container}>
             <SafeAreaView >
                 <View style={styles.cont}>
@@ -53,12 +55,10 @@ const PeliculasScreen = () => {
                     />
 
                 </View>
-
-
-
-
             </SafeAreaView>
         </ScrollView>
+        <FakeTabs/>
+        </View>
     );
 };
 
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+    container2: {
+        flex: 1,
     },
     text: {
         textAlign: 'center',

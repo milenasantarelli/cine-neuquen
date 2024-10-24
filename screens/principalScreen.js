@@ -66,8 +66,6 @@ const PrincipalScreen = () => {
                     </View>
                 </SafeAreaView>
             </ScrollView>
-
-       
             <FakeTabs />
         </View>
     )}

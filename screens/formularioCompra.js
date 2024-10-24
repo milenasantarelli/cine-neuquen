@@ -1,13 +1,13 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, Image } from 'react-native';
-
+import FakeTabs from '../assets/components/fakeTabs';
 
 
 const FormularioCompraScreen = () => {
 
     return (
-
+        <View style={styles.container}>
         <ScrollView>
             <View style={styles.cont}>
                 <Image source={require('../assets/logoappc.png')} style={styles.img}/>
@@ -26,7 +26,8 @@ const FormularioCompraScreen = () => {
                 </View>
             </View>
         </ScrollView>
-
+        <FakeTabs/>
+        </View>
     );
 }
 
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#000000',
         width: 'auto',
-        height: '85%',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

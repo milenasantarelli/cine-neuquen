@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
+import FakeTabs from '../assets/components/fakeTabs';
 
 
 
 const ComprarEntradaScreen = () => {
 
     return (
+    <View style={styles.container}>
         <ScrollView>
             <View style={styles.cont}>
                 <Image source={require('../assets/logoappc.png')} style={styles.img}/>
@@ -25,7 +27,8 @@ const ComprarEntradaScreen = () => {
                 </View>
             </View>
         </ScrollView>
-
+        <FakeTabs/>
+    </View>
     );
 };
 
