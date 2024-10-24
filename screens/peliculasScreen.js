@@ -39,7 +39,7 @@ const PeliculasScreen = () => {
                     />
 
                     <Image
-                    
+                    source={{uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fcserrasc%2Fposter-peliculas%2F&psig=AOvVaw34aTBKn3uosSXGj9-Pc0zz&ust=1729378727683000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDmpe6CmYkDFQAAAAAdAAAAABAJ'}}
                     />
 
                     <Image
