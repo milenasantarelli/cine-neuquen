@@ -58,7 +58,7 @@ const PrincipalScreen = () => {
                                 title='FormCompra'
                                 onPress={()=> navigation.navigate('FormCompra')}
                             />
-                             <Button
+                            <Button
                                 title='Peliculas'
                                 onPress={()=> navigation.navigate('Peliculas')}
                             />
@@ -66,8 +66,6 @@ const PrincipalScreen = () => {
                     </View>
                 </SafeAreaView>
             </ScrollView>
-
-       
             <FakeTabs />
         </View>
     )}
@@ -93,11 +91,14 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#000000',
         width: 'auto',
-        height:1000,
+        height: '100%',
     },
     cont: {
         backgroundColor: '#8d0c1b',
         height: 200,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     cartel: {
         color: '#fff',
@@ -108,7 +109,9 @@ const styles = StyleSheet.create({
     img: {
         height: 180,
         width: 180,
-        marginLeft: 120,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     concarru: {
         paddingTop: 30,

@@ -82,7 +82,7 @@ const style = StyleSheet.create({
   },
   view1: {
     width: 'auto',
-    height: 550,
+    height: '100%',
     backgroundColor: '#8d0c1b',
     display: 'flex',
     justifyContent: 'center',
@@ -103,7 +103,7 @@ const style = StyleSheet.create({
     fontFamily: 'Arial',
   },
   inputs: {
-    marginTop: 150,
+    marginTop: 100,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -118,7 +118,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: '100%',
+    height: '50%',
     backgroundColor: '#000000',
   },
   boton: {

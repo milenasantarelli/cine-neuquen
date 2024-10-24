@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderColor: '#fff',
     borderWidth: 1,
-    marginBottom: 50,
+    marginBottom: 55,
     paddingHorizontal: 10,
     borderRadius: 5,
     backgroundColor: '#fff',
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: '100%',
+    height: '40%',
     backgroundColor: '#000000',
   },
   boton: {
