@@ -118,7 +118,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: '50%',
+    height: '99%',
     backgroundColor: '#000000',
   },
   boton: {

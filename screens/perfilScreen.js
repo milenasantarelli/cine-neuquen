@@ -30,9 +30,10 @@ const PerfilScreen = () => {
             </View>
             <View style={styles.body}>
                 <Image source={require('../assets/person.png')} style={styles.iconPerfil} />
-                <Text style={styles.text}></Text>
+                <View style={styles.texts}>
+                
                 <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
-
+                </View>
                 <Text style={styles.text}>MIS ENTRADAS</Text>
                 <Button
                     title='Mis peliculas'
@@ -92,10 +93,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: '80%'
     },
+    texts:{
+        
+    },
     text: {
         color: '#ffffff',
         fontSize: 30,
         bottom: '35%',
+        textAlign: 'center',
     },
     Button: {
         display: 'flex',
