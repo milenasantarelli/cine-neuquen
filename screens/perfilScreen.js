@@ -1,13 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FakeTabs from '../assets/components/fakeTabs';
+import { getAuth } from 'firebase/auth';
 
 
 const PerfilScreen = () => {
 
     const navigation = useNavigation();
 
+    const [userInfo, setUserInfo] = useState({ email: '', displayName: 'Nombre no disponible' });  
+ const auth = getAuth();  
+
+ useEffect(() => {  
+ const user = auth.currentUser; if (user) {  
+ setUserInfo({  
+ email: user.email,  
+ displayName: user.displayName || 'Nombre no disponible',  
+ });  
+ }  
+ }, [auth]);  
     return (
 
     <View style={styles.container}>
@@ -18,7 +30,8 @@ const PerfilScreen = () => {
             </View>
             <View style={styles.body}>
                 <Image source={require('../assets/person.png')} style={styles.iconPerfil} />
-                <Text style={styles.text}>Nombre y Apellido</Text>
+                <Text style={styles.text}></Text>
+                <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
 
                 <Text style={styles.text}>MIS ENTRADAS</Text>
                 <Button
@@ -33,7 +46,7 @@ const PerfilScreen = () => {
         <FakeTabs/>
         </View>
     );
-}
+};
 
 export default PerfilScreen;
 
