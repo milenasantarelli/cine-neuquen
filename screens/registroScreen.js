@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: '40%',
+    height: 400,
     backgroundColor: '#000000',
   },
   boton: {

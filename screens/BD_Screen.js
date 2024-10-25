@@ -148,7 +148,7 @@ const style = StyleSheet.create({
   body: {
     backgroundColor: '#000000',
     width: 'auto',
-    height: '100%',
+    height: 1000,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -199,3 +199,4 @@ const style = StyleSheet.create({
     width: 300,
   },
 });
+

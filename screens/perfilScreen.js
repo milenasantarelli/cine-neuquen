@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, ScrollView, Image, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import FakeTabs from '../assets/components/fakeTabs';
-import { getAuth } from 'firebase/auth';
+import { AuthCredential, getAuth } from 'firebase/auth';
 
 
 const PerfilScreen = () => {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#000000',
         width: 'auto',
-        height: '100%',
+        height: 1000,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -93,13 +93,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: '80%'
     },
-    texts:{
-        
-    },
     text: {
         color: '#ffffff',
         fontSize: 30,
-        bottom: '35%',
+        bottom: '40%',
         textAlign: 'center',
     },
     Button: {
