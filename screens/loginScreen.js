@@ -111,7 +111,9 @@ const style = StyleSheet.create({
   titulo: {
     fontSize: 40,
     color: '#fff',
-    marginLeft: 140,
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
     marginTop: 50,
   },
   view2: {

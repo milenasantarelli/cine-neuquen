@@ -57,7 +57,7 @@ view2: {
     justifyContent: 'center',
     alignItems: 'center',
     width: 'auto',
-    height: '35%',
+    height: 350,
     backgroundColor: '#000000',
 },
 titulo: {
