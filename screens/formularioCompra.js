@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     },
     boton: {
         width: 250,
-        Bottom: '40%',
+        marginBottom: 340,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -69,12 +69,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     Cont2 :{
+        marginBottom: 80,
         backgroundColor: '#8d0c1b',
         display: 'flex',
         justifyContent: 'center',
         width: 340,
-        height: '50%',
-        marginBottom: '40%',
+        height: 400,
         borderRadius: 20,
     },
     texto :{
@@ -86,13 +86,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     titulo: {
-        left: 10,
         bottom: 20,
         fontSize: 35,
-        marginTop: 30,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        textAlign: 'center',
         color: '#fff',
     },
 
