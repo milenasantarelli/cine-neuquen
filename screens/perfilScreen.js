@@ -29,7 +29,7 @@ const PerfilScreen = () => {
                 <Image source={require('../assets/logoappc.png')} style={styles.img} />
             </View>
             <View style={styles.body}>
-                <Image source={require('../assets/person.png')} style={styles.iconPerfil} />
+                <Image source={require('../assets/icon-usernew.png')} style={styles.iconPerfil} />
                 <View style={styles.texts}>
                 
                 <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
