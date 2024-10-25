@@ -1,11 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+// Importar Firebase y Firestore
+import { initializeApp } from 'firebase/app';
+import { getFirestore, serverTimestamp } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBpKFlPp9ttt34fMC5RTR6TzDneW86QPFw",
   authDomain: "proyecto-expo-a48e4.firebaseapp.com",
@@ -16,7 +13,9 @@ const firebaseConfig = {
   measurementId: "G-FWW89EH9WS"
 };
 
-// Initialize Firebase
+// Inicializa Firebase y Firestore
 const appFirebase = initializeApp(firebaseConfig);
+const firestore = getFirestore(appFirebase);
 
-export default appFirebase
+// Exporta Firestore y la función de marca de tiempo del servidor
+export { firestore, serverTimestamp };

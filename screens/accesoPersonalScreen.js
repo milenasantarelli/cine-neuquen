@@ -1,35 +1,72 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Button} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import appFirebase from '../credenciales';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import LoadingScreen from '../assets/components/loadingScreen';  
+import * as SplashScreen from 'expo-splash-screen'; 
 
+
+
+const auth = getAuth(appFirebase)
 
 
 const AccesoAdminScreen = () => {
   const native = useNavigation();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  useEffect(() => {  
+    const prepare = async () => {  
+
+    await new Promise(resolve => setTimeout(resolve,2000));  
+    setIsLoading(false);  
+    await SplashScreen.hideAsync();
+
+    };  
+   
+    prepare();  
+    }, []);  
+   
+    if (isLoading) {  
+    return <LoadingScreen />;  
+    }  
+  const logueo = async () => {
+    setIsLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
+      Alert.alert('Iniciando Sesion', 'Accediendo...')
+      native.navigate('Base')
+
+    } catch (error) {
+      console.log(error);
+    } finally{
+      setIsLoading(false);
+    }
+  }
   return (
     <ScrollView>
     <View style={style.view1}>
         <Text style={style.titulo}>Hola Administrador</Text>
             <TextInput
                 style={style.inputs}
-                placeholder="Código de administrador"
-            />
-            <TextInput
-                style={style.inputs}
-                placeholder="Nombre"
+                placeholder="Correo Electrónico"
+                onChangeText={(text) => setEmail(text)}
             />
             <TextInput
                 style={style.inputs}
                 placeholder="Contraseña"
-                secureTextEntry
+                onChangeText={(text) => setPassword(text)}
+                secureTextEntry={true}
             />
+           
     </View>
     <View style={style.view2}>
         <View style={style.boton}>
-            <Button title='ENTRAR'
-            onPress={()=> native.navigate("Base de Datos")}
-                color='#EEA816'
-            />
+        <TouchableOpacity onPress={logueo} style={style.touchcolor}>
+            <Text style={style.touchtext}>Entrar</Text>
+          </TouchableOpacity>
         </View>    
     </View>
     </ScrollView>
@@ -87,5 +124,17 @@ boton: {
     width: 250,
     marginTop: -60,
 },
+touchcolor: {
+    backgroundColor: '#EEA816',
+    width: 250,
+    height: 30,
+
+  },
+  touchtext: {
+    fontSize: 16,
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
 

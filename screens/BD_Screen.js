@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
+import { firestore, serverTimestamp } from '../credenciales';
+import { collection, addDoc } from 'firebase/firestore';
+
+
 
 const BdScreen = () => {
   const navigation = useNavigation();
@@ -14,7 +18,6 @@ const BdScreen = () => {
   const [category, setCategory] = useState('');
   const [duration, setDuration] = useState('');
 
-  // Imagen horizontal
   const pickHorizontalImg = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -28,7 +31,6 @@ const BdScreen = () => {
     }
   };
 
-  // Imagen vertical
   const pickVerticalImg = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -42,15 +44,26 @@ const BdScreen = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log("Título:", title);
-    console.log("Descripción:", description);
-    console.log("Clasificación de edad:", ageRating);
-    console.log("Categoría:", category);
-    console.log("Duración:", duration);
-    console.log("Imagen horizontal:", horizontalImg);
-    console.log("Imagen vertical:", verticalImg);
+  const handleSubmit = async () => {
+    try {
+      await addDoc(collection(firestore, 'Peliculas'), {
+        title,
+        description,
+        ageRating,
+        category,
+        duration,
+        horizontalImg,
+        verticalImg,
+        createdAt: serverTimestamp()
+      });
+      console.log("Película guardada en Firestore");
+      alert("Película guardada correctamente");
+    } catch (error) {
+      console.error("Error al guardar en Firestore: ", error);
+      alert("Hubo un error al guardar la película");
+    }
   };
+  
 
   return (
     <View style={style.container}>
@@ -93,17 +106,17 @@ const BdScreen = () => {
               onChangeText={setDuration}
               keyboardType="numeric"
             />
-              <View style={style.boton}>
-                <Button title="Seleccionar imagen horizontal" onPress={pickHorizontalImg} color="#EEA816"/>
-                {horizontalImg && <Image source={{ uri: horizontalImg }} style={style.horizontalImg} />}
-              </View>
-              <View style={style.boton}>
-                <Button title="Seleccionar imagen vertical" onPress={pickVerticalImg} color="#EEA816"/>
-                {verticalImg && <Image source={{ uri: verticalImg }} style={style.verticalImg} />}
-              </View>
-              <View style={style.boton}>
-                <Button title="Enviar" onPress={handleSubmit} color="#EEA816"/>
-              </View>
+            <View style={style.boton}>
+              <Button title="Seleccionar imagen horizontal" onPress={pickHorizontalImg} color="#EEA816"/>
+              {horizontalImg && <Image source={{ uri: horizontalImg }} style={style.horizontalImg} />}
+            </View>
+            <View style={style.boton}>
+              <Button title="Seleccionar imagen vertical" onPress={pickVerticalImg} color="#EEA816"/>
+              {verticalImg && <Image source={{ uri: verticalImg }} style={style.verticalImg} />}
+            </View>
+            <View style={style.boton}>
+              <Button title="Enviar" onPress={handleSubmit} color="#EEA816"/>
+            </View>
           </View>
         </View>
       </ScrollView>

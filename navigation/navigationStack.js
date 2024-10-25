@@ -38,7 +38,7 @@ const NavigationStack = () => {
 
         <Stack.Screen name="DetallesPelicula" component={MovieDetails} options={{ headerShown: false}}/>
 
-        <Stack.Screen name="Base de Datos" component={BdScreen} options={{ title: 'Base de Datos' }} />
+        <Stack.Screen name="Base" component={BdScreen} options={{ title: 'Base de Datos' }} />
 
         <Stack.Screen name="Comprar entrada" component={ComprarEntradaScreen} options={{ title: 'Comprar entrada' }} />
 
