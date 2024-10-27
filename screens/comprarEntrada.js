@@ -23,7 +23,7 @@ const ComprarEntradaScreen = () => {
                 </View>
                 <Text style={styles.title}>Billetera Virtual Mercado Pago</Text>
                 <View style={styles.boton}>
-                    <Button title='PAGAR'/>
+                    <Button title='PAGAR' color='#EEA816'/>
                 </View>
             </View>
         </ScrollView>
@@ -36,8 +36,7 @@ export default ComprarEntradaScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: '1px',
-        padding: '20'
+        flex: 1,
     },
     img:{
         height: 180,
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
     body: {
         backgroundColor: '#000000',
         width: 'auto',
-        height: '100%',
+        height: 1000,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         color: '#fff',
+        fontFamily: 'Arial',
     },
     boton: {
         color: '#0d4f83',

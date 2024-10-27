@@ -35,7 +35,7 @@ export default FormularioCompraScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: '1px',
+        flex: 1,
         padding: '20'
     },
     img:{
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         position: 'static',
         fontSize: 30,
+        fontFamily: 'Arial',
     },
     titulo: {
         bottom: 20,
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         color: '#fff',
+        fontFamily: 'Arial',
     },
 
 });

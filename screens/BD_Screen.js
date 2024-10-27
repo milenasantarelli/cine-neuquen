@@ -157,6 +157,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     marginBottom: 60,
+    fontFamily: 'Arial',
   },
   input: {
     height: 40,
