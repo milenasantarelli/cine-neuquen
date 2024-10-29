@@ -1,32 +1,202 @@
-import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Button} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
+import { firestore, serverTimestamp } from '../credenciales';
+import { collection, addDoc } from 'firebase/firestore';
+
+
 
 const BdScreen = () => {
-  const native = useNavigation();
+  const navigation = useNavigation();
+
+  const [horizontalImg, setHorizontalImg] = useState(null);
+  const [verticalImg, setVerticalImg] = useState(null);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [ageRating, setAgeRating] = useState('');
+  const [category, setCategory] = useState('');
+  const [duration, setDuration] = useState('');
+
+  const pickHorizontalImg = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [16, 9], 
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setHorizontalImg(result.assets[0].uri);
+    }
+  };
+
+  const pickVerticalImg = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [9, 16], 
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setVerticalImg(result.assets[0].uri);
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await addDoc(collection(firestore, 'Peliculas'), {
+        title,
+        description,
+        ageRating,
+        category,
+        duration,
+        horizontalImg,
+        verticalImg,
+        createdAt: serverTimestamp()
+      });
+      console.log("Película guardada en Firestore");
+      alert("Película guardada correctamente");
+    } catch (error) {
+      console.error("Error al guardar en Firestore: ", error);
+      alert("Hubo un error al guardar la película");
+    }
+  };
+  
+
   return (
-    <ScrollView>
-    <View style={style.view1}>
-        <Text style={style.titulo}>Hola Administrador Bienvenido a la base de datos</Text>
+    <View style={style.container}>
+      <ScrollView>
+        <View style={style.view1}>
+          <Image source={require('../assets/logoappc.png')} style={style.img} />
+        </View>
+        <View style={style.body}>
+          <Text style={style.text}>Dar de alta una película</Text>
+          <View style={style.cont}>
+            <TextInput
+              style={style.input}
+              placeholder="Título de la película"
+              value={title}
+              onChangeText={setTitle}
+            />
+            <TextInput
+              style={style.input}
+              placeholder="Descripción de la película"
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+            <TextInput
+              style={style.input}
+              placeholder="Clasificación de edad"
+              value={ageRating}
+              onChangeText={setAgeRating}
+            />
+            <TextInput
+              style={style.input}
+              placeholder="Categoría"
+              value={category}
+              onChangeText={setCategory}
+            />
+            <TextInput
+              style={style.input}
+              placeholder="Duración (en minutos)"
+              value={duration}
+              onChangeText={setDuration}
+              keyboardType="numeric"
+            />
+            <View style={style.boton}>
+              <Button title="Seleccionar imagen horizontal" onPress={pickHorizontalImg} color="#EEA816"/>
+              {horizontalImg && <Image source={{ uri: horizontalImg }} style={style.horizontalImg} />}
+            </View>
+            <View style={style.boton}>
+              <Button title="Seleccionar imagen vertical" onPress={pickVerticalImg} color="#EEA816"/>
+              {verticalImg && <Image source={{ uri: verticalImg }} style={style.verticalImg} />}
+            </View>
+            <View style={style.boton}>
+              <Button title="Enviar" onPress={handleSubmit} color="#EEA816"/>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
     </View>
-    <View style={style.view2}>
-        <View style={style.boton}>
-            <Button title='HACER CONSULTA'/>
-        </View>    
-        <View style={style.boton}>
-            <Button title='CERRAR PERFIL'/>
-        </View>    
-    </View>
-    </ScrollView>
   );
 }
-export default BdScreen ;
+
+export default BdScreen;
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#10152f',
-    alignItems: 'center',
+    padding: '20',
+  },
+  view1: {
+    backgroundColor: '#8d0c1b',
+    height: 200,
+    display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  img: {
+    height: 180,
+    width: 180,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  body: {
+    backgroundColor: '#000000',
+    width: 'auto',
+    height: 1000,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cont: {
+    marginBottom: 80,
+    backgroundColor: '#8d0c1b',
+    display: 'flex',
+    justifyContent: 'center',
+    width: 340,
+    height: 'auto',
+    borderRadius: 20,
+    padding: 20,
+  },
+  text: {
+    color: '#ffffff',
+    fontSize: 30,
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginBottom: 60,
+  },
+  input: {
+    height: 40,
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  horizontalImg: {
+    width: 400,
+    height: 150,
+    alignItems: 'center',
+  },
+  verticalImg: {
+    width: 400,
+    height: 200,
+    alignItems: 'center',
+  },
+  boton: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    color: '#fff',
+    color: '#0d4f83',
+    margin: 10,
+    width: 300,
   },
 });
+

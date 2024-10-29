@@ -13,7 +13,7 @@ import React from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
 import { useNavigation } from '@react-navigation/native';
 import data from '../assets/data/movies.json';
-
+import FakeTabs from '../assets/components/fakeTabs';
 
 
 const PrincipalScreen = () => {
@@ -26,57 +26,58 @@ const PrincipalScreen = () => {
     }
 
     return (
-    <ScrollView style={styles.container}>
-        <SafeAreaView >
-            <View style={styles.cont}>
-                <Image source={require('../assets/logoappc.png')} style={styles.img}/>
-            </View>
-            <View style={styles.body}>
-                 
-                <View style={styles.concarru}>
-                    <View style={styles.carouselContainer}>
-                        <CuadradoImagenCarrusel
-                            data={data}
-                            autoPlay={true}
-                            pagination={true}
-                            onImagePress={onImagePress}
-                        />
+        <View style={styles.container}>
+            <ScrollView contentContainerStyle={styles.scrollContent}>
+                <SafeAreaView>
+                    <View style={styles.cont}>
+                        <Image source={require('../assets/logoappc.png')} style={styles.img}/>
                     </View>
-                </View>
-                <View>
-                <Text style={styles.cartel}>Menu</Text>
-                <Button
-                title='Perfil'
-                onPress={()=> navigation.navigate('Perfil')}
-                />
 
-                <Button
-                title='Comprar entrada'
-                onPress={()=> navigation.navigate('Comprar entrada')}
-                />
-
-                <Button
-                title='FormCompra'
-                onPress={()=> navigation.navigate('FormCompra')}
-                />
-                </View>
-      </View>
-
-
-
-
-        </SafeAreaView>
-    </ScrollView>
-    );
-};
-
+                    <View style={styles.body}>
+                        <View style={styles.concarru}>
+                            <View style={styles.carouselContainer}>
+                                <CuadradoImagenCarrusel
+                                    data={data}
+                                    autoPlay={true}
+                                    pagination={true}
+                                    onImagePress={onImagePress}
+                                />
+                            </View>
+                        </View>
+                        <View>
+                            <Text style={styles.cartel}>Menu</Text>
+                            <Button
+                                title='Perfil'
+                                onPress={()=> navigation.navigate('Perfil')}
+                            />
+                            <Button
+                                title='Comprar entrada'
+                                onPress={()=> navigation.navigate('Comprar entrada')}
+                            />
+                            <Button
+                                title='FormCompra'
+                                onPress={()=> navigation.navigate('FormCompra')}
+                            />
+                            <Button
+                                title='Peliculas'
+                                onPress={()=> navigation.navigate('Peliculas')}
+                            />
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </ScrollView>
+            <FakeTabs />
+        </View>
+    )}
 export default PrincipalScreen;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-       
+        backgroundColor: '#000', 
+    },
+    scrollContent: {
+        paddingBottom: 100, 
     },
     text: {
         textAlign: 'center',
@@ -86,16 +87,18 @@ const styles = StyleSheet.create({
     },
     carouselContainer: {
         marginBottom: 20,
-        
     },
     body: {
-        backgroundColor: '#10152f',
+        backgroundColor: '#000000',
         width: 'auto',
-        height: 900,
+        height: '100%',
     },
     cont: {
-        backgroundColor: '#384358',
+        backgroundColor: '#8d0c1b',
         height: 200,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     cartel: {
         color: '#fff',
@@ -103,12 +106,14 @@ const styles = StyleSheet.create({
         marginLeft: 85,
         marginTop: 120,
     },
-    img:{
+    img: {
         height: 180,
         width: 180,
-        marginLeft: 120,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    concarru:{
-      paddingTop:30,
+    concarru: {
+        paddingTop: 30,
     },
 });

@@ -147,40 +147,26 @@ const ComprarEntradaScreen = ({ route }) => {
       <View style={styles.cont}>
         <Image source={require("../assets/logoappc.png")} style={styles.img} />
       </View>
-
       <ScrollView style={styles.body}>
-        {/* <View> */}
-        <Text style={styles.comp}>Detalles de la compra</Text>
-
-        <View style={styles.Cont2}>
-          <Text style={styles.texto}>Película: {item.nombre}</Text>
-          <Text style={styles.texto}>
-            Cantidad Entradas: {cantidadEntradas}
-          </Text>
-          <Text style={styles.texto}>Fecha: {fecha}</Text>
-          <Text style={styles.texto}>Hora: {horario} hrs</Text>
-          <Text style={styles.texto}>Total: ${totalAPagar}</Text>
-        </View>
-
-        <View style={styles.boton}>
-          <Button title="IR A PAGAR" onPress={manejoDePagos} />
-        </View>
-        {/* </View> */}
-      </ScrollView>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalView}>
-            <Text>{modalMessage}</Text>
-            <Button title="OK" onPress={() => setModalVisible(false)} />
+        <View>
+          <Text style={styles.comp}>Detalles de la compra</Text>
+          <View style={styles.Cont2}>
+            <Text style={styles.texto}>Película: {item.nombre}</Text>
+            <Text style={styles.texto}>Cantidad Entradas: {cantidadEntradas}</Text>
+            <Text style={styles.texto}>Fecha: {fecha}</Text>
+            <Text style={styles.texto}>Hora: {horario} hrs</Text>
+            <Text style={styles.texto}>Total: ${totalAPagar}</Text>
+          </View>
+          <Text style={styles.title}>Billetera Virtual</Text>
+          <View style={styles.Cont2}>
+            <Text style={styles.text2}>Alias :</Text>
+            <Text style={styles.text2}>QR :</Text>
+          </View>
+          <View style={styles.boton}>
+            <Button title="IR A PAGAR" />
           </View>
         </View>
-      </Modal>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -207,15 +193,15 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     width: 350,
     height: 400,
-    marginTop: 10,
+    marginTop: 60,
     borderRadius: 20,
   },
   body: {
     backgroundColor: "#10152f",
     width: "auto",
     height: 1200,
-    display: "flex",
-    alignContent: "center",
+    display: 'flex',
+    alignContent: 'center',
   },
   texto: {
     display: "flex",

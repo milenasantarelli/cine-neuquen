@@ -1,76 +1,77 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, ScrollView, TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import appFirebase from '../credenciales'; 
+import LoadingScreen from '../assets/components/loadingScreen';  
+import * as SplashScreen from 'expo-splash-screen'; 
 
+const auth = getAuth(appFirebase);
 
-const RegistroScreen = () => {
-  const native = useNavigation();
+export default function RegisterScreen(props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
 
-  const [correo, setCorreo] = useState("")
-  const [nombre, setNombre] = useState("")
-  const [password, setPass] = useState("")
+  useEffect(() => {  
+    const prepare = async () => {  
 
-  const registrarse = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(correo, password)
-      .then((response) => {
-        const uid = response.user.uid
-        const data = {
-          id: uid,
-          email,
-          fullName
-        }
-        /* const usersRef = firebase.firestore().collection('users')
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate('Home', { user: data })
-          })
-          .catch((error) => {
-            alert(error)
-          }) */
-      })
-      .catch((error) => {
-        alert(error)
-      })
-  }
+    await new Promise(resolve => setTimeout(resolve,2000));  
+    setIsLoading(false);  
+    await SplashScreen.hideAsync();
+
+    };  
+   
+    prepare();  
+    }, []);  
+   
+    if (isLoading) {  
+    return <LoadingScreen />;  
+    }  
+  const registro = async () => {
+  
+    try {
+      
+      await createUserWithEmailAndPassword(auth, email, password, name);
+      Alert.alert('Registro exitoso', 'Usuario creado correctamente');
+      props.navigation.navigate('Principal');  
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Error', error.message);
+    } 
+  };
+
   return (
     <ScrollView>
-
       <View style={styles.view1}>
         <Text style={styles.titulo}>REGISTRATE</Text>
         <TextInput
           style={styles.input}
           placeholder="Correo Electrónico"
-          onChangeText={(e) => setCorreo(e)}
+          onChangeText={(text) => setEmail(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Nombre de Usuario"
-          onChangeText={(e) => setNombre(e)}
+          onChangeText={(text) => setNombre(text)}
         />
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
           secureTextEntry
-          onChangeText={(e) => setPass(e)}
+          onChangeText={(text) => setPassword(text)}
         />
-        <View style={styles.viewin}>
-        </View>
       </View>
       <View style={styles.view2}>
         <View style={styles.boton}>
-          <Button title='REGISTRARME'
-            onPress={() => registrarse()}
-          />
+          <TouchableOpacity onPress={registro} style={styles.touchcolor}>
+            <Text style={styles.touchtext}>Registrarse</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
   );
 }
-export default RegistroScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -80,45 +81,60 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   view1: {
-
     width: 'auto',
     height: 550,
     backgroundColor: '#8d0c1b',
-  },
-
-  view2: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 'auto',
-    height: 262,
-    backgroundColor: '#0b1442',
-  },
-  boton: {
-    width: 250,
-    marginTop: -60,
   },
   input: {
     height: 50,
     borderColor: '#fff',
     borderWidth: 1,
-    marginBottom: 50,
+    marginBottom: 55,
     paddingHorizontal: 10,
     borderRadius: 5,
     backgroundColor: '#fff',
     width: 300,
-    marginLeft: 50,
+    display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'Arial',
   },
-  viewin: {
-    marginTop: 100,
+  view2: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'auto',
+    height: 400,
+    backgroundColor: '#000000',
+  },
+  boton: {
+    width: 250,
+    marginTop: -60,
+  },
+  touchcolor:{
+    backgroundColor:'#EEA816',
+    width: 250,
+    height: 30,
+    
+  },
+  touchtext:{
+    fontSize:16,
+    color:'#fff',
+    textAlign:'center',
+    fontWeight:'bold',
   },
   titulo: {
     fontSize: 40,
     color: '#fff',
-    marginLeft: 90,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems:'center',
     marginTop: 30,
     marginBottom: 50,
   },
+  viewin: {
+    marginTop: 100,
+  },
 });
-
