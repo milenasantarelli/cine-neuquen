@@ -3,36 +3,40 @@
         "id": 1,
         "nombre": "Shrek 2",
         "image": "https://wallpapers.com/images/hd/shrek-2-poster-crowding-circle-qrbjmvmtvwksj2dz.jpg",
+        "horizontalImage": "https://www.victorsancho.com/wp-content/uploads/2021/04/poster-15.jpg",
         "sipnosis": "La aventura continúa cuando una pareja de ogros es invitada a conocer a los padres de la novia. En su viaje al reino de Muy Muy Lejano, se enfrentan a nuevos personajes y situaciones cómicas que pondrán a prueba su amor y su identidad.",
-        "clasificacion": "",
-        "duracion": "",
-        "categoria": ""
+        "clasificacion": "PG",
+        "duracion": "190 min.",
+        "categoria": "Animación, Comedia"
     },
     {
         "id": 2,
-        "nombre": "Barbie: esclava y princesa",
-        "image": "https://image.tmdb.org/t/p/original/9WMJoDdfbVS9NDPjsQNuhmDO7zk.jpg",
-        "sipnosis": "Una princesa y una plebeya, con asombrosas similitudes, intercambian lugares para experimentar la vida del otro. En medio de situaciones inesperadas, deben adaptarse a sus nuevas realidades y enfrentar desafíos que pondrán a prueba sus habilidades y coraje.",
-        "clasificacion": "",
-        "duracion": "",
-        "categoria": ""
+        "nombre": "El Diario de una Pricesa",
+        "image": "https://m.media-amazon.com/images/S/pv-target-images/a129f8817103991465c78c92a673825a660365005cd4880b5ea44c0cdf31f097.jpg",
+        "horizontalImage": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsqmmvpmODp-_3uV2xHvE3Dy0Pe2LhbDNTTNWSYBlSLY1ynFHU7Qs2UINJ6gL64YO8_UicD9XR8RdUCHvBC2foZjgC1RQDPW71T1OYqGdWPpq8WCQ4K6dIc81ObFtix-YbtdXQgZfig9-pH88BcsvxltyhE4g3fCVtspJo1eEHS09D6Pq_AujnldmFUg/s800/diario-princesa-1.jpg",
+        "sipnosis": "Mia vive en San Fransisco con su bohemia madre, asiste al colegio con su mejor amiga Lilly pero sus compañeros viven burlandose de ella y su único sueño es comprarse un viejo Mustang. Además de ser una chica de 15 años torpe, afeada y tímida, Mia es la heredera natural al trono de Genovia. La reina Clarisse Renaldi es su abuela  la encargada de comunicarle que ha llegado la hora de hacerse cargo de su responsabilidad. Entrenamiento mediante, claro está. Así es como desencadena el conflicto por el que debe atravesar.",
+        "clasificacion": "PG",
+        "duracion": "115 min.",
+        "categoria": "Comedia, Familia"
     },
     {
         "id": 3,
         "nombre": "Un cuento chino",
-        "image": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/828E0207C04B0844CD43771E5C402068DDDC0B8D8AA8BD4EF6C9CA30CADFBF46/scale?width=1200&amp;aspectRatio=1.78&amp;format=webp",
+        "image": "https://m.media-amazon.com/images/S/pv-target-images/bfd95a535d70664aa85469414c812aa56c314d2ce90a41e85defa8aacde48b19.jpg",
+        "horizontalImage": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/828E0207C04B0844CD43771E5C402068DDDC0B8D8AA8BD4EF6C9CA30CADFBF46/scale?width=1200&aspectRatio=1.78&format=webp",
         "sipnosis": "Un ferretero solitario, Roberto (Ricardo Darín), se ve obligado a cuidar a un hombre chino que busca regresar a su hogar tras un incidente inesperado.",
-        "clasificacion": "",
-        "duracion": "",
-        "categoria": ""
+        "clasificacion": "PG-13",
+        "duracion": "93 min.",
+        "categoria": "Ficción"
     },
     {
         "id": 4,
-        "nombre": "Indianna Jones",
+        "nombre": "Indianna Jones 5",
         "image": "https://lh3.googleusercontent.com/proxy/EPjHwmLhaIJBNMx5DYkM296CgVXoAG37ybDQXGw3P2vP8uAnQ-wQE4I8Xnqt_5I-Vebo7-J7iUcbi68FEyaKUH2dP6sWxH-lEF_qOgChwcZ0SRXlhuQm-3xI_FsIkwg7-d29fAn5MH9lXEI40H7QshW4H2ztxCJFOf2G6uCIWniha3ZhMBafl1sCCXF2NSNXL6Xl-xRrZd0O4Q",
+        "horizontalImage": "https://moviekoop.com/Images/Cover_Photos/Indiana-Jones-And-The-Dial-Of-Destiny.jpg",
         "sipnosis": "El legendario arqueólogo se embarca en una nueva aventura en busca de un antiguo artefacto que podría cambiar el curso de la historia. Jones se enfrentará a antiguos enemigos y nuevos peligros.",
-        "clasificacion": "",
-        "duracion": "",
-        "categoria": ""
+        "clasificacion": "PG-13",
+        "duracion": "162 min.",
+        "categoria": "Aventura, Acción"
     }
 ]
