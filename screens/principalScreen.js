@@ -45,11 +45,6 @@ const PrincipalScreen = () => {
                             </View>
                         </View>
                         <View>
-                            <Text style={styles.cartel}>Menu</Text>
-                            <Button
-                                title='Perfil'
-                                onPress={()=> navigation.navigate('Perfil')}
-                            />
                             <Button
                                 title='Comprar entrada'
                                 onPress={()=> navigation.navigate('Comprar entrada')}

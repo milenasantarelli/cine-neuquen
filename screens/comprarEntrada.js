@@ -23,7 +23,7 @@ const ComprarEntradaScreen = () => {
                 </View>
                 <Text style={styles.title}>Billetera Virtual Mercado Pago</Text>
                 <View style={styles.boton}>
-                    <Button title='PAGAR' color='#EEA816'/>
+                    <Button title='     PAGAR      ' color='#EEA816'/>
                 </View>
             </View>
         </ScrollView>
@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: '#fff',
         fontFamily: 'Arial',
+        marginBottom: 30,
+        marginTop: -200,
     },
     boton: {
         color: '#0d4f83',
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#fff',
         fontSize: 30,
-        marginTop: 20,
+        marginTop: 60,
+        marginBottom: 20,
     },
 });
