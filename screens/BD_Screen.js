@@ -1,59 +1,30 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import * as ImagePicker from 'expo-image-picker';
 import { firestore, serverTimestamp } from '../credenciales';
 import { collection, addDoc } from 'firebase/firestore';
 
-
-
 const BdScreen = () => {
   const navigation = useNavigation();
-
-  const [horizontalImg, setHorizontalImg] = useState(null);
-  const [verticalImg, setVerticalImg] = useState(null);
+  const [horizontalImgUrl, setHorizontalImgUrl] = useState('');
+  const [verticalImgUrl, setVerticalImgUrl] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [ageRating, setAgeRating] = useState('');
   const [category, setCategory] = useState('');
   const [duration, setDuration] = useState('');
 
-  const pickHorizontalImg = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [16, 9], 
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setHorizontalImg(result.assets[0].uri);
-    }
-  };
-
-  const pickVerticalImg = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [9, 16], 
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setVerticalImg(result.assets[0].uri);
-    }
-  };
-
   const handleSubmit = async () => {
     try {
+     
       await addDoc(collection(firestore, 'Peliculas'), {
         title,
         description,
         ageRating,
         category,
         duration,
-        horizontalImg,
-        verticalImg,
+        horizontalImgUrl,
+        verticalImgUrl,
         createdAt: serverTimestamp()
       });
       console.log("Película guardada en Firestore");
@@ -63,7 +34,6 @@ const BdScreen = () => {
       alert("Hubo un error al guardar la película");
     }
   };
-  
 
   return (
     <View style={style.container}>
@@ -106,16 +76,22 @@ const BdScreen = () => {
               onChangeText={setDuration}
               keyboardType="numeric"
             />
+            <TextInput
+              style={style.input}
+              placeholder="URL de imagen horizontal"
+              value={horizontalImgUrl}
+              onChangeText={setHorizontalImgUrl}
+            />
+            {horizontalImgUrl && <Image source={{ uri: horizontalImgUrl }} style={style.horizontalImg} />}
+            <TextInput
+              style={style.input}
+              placeholder="URL de imagen vertical"
+              value={verticalImgUrl}
+              onChangeText={setVerticalImgUrl}
+            />
+            {verticalImgUrl && <Image source={{ uri: verticalImgUrl }} style={style.verticalImg} />}
             <View style={style.boton}>
-              <Button title="Seleccionar imagen horizontal" onPress={pickHorizontalImg} color="#EEA816"/>
-              {horizontalImg && <Image source={{ uri: horizontalImg }} style={style.horizontalImg} />}
-            </View>
-            <View style={style.boton}>
-              <Button title="Seleccionar imagen vertical" onPress={pickVerticalImg} color="#EEA816"/>
-              {verticalImg && <Image source={{ uri: verticalImg }} style={style.verticalImg} />}
-            </View>
-            <View style={style.boton}>
-              <Button title="Enviar" onPress={handleSubmit} color="#EEA816"/>
+              <Button title="Enviar" onPress={handleSubmit} color="#EEA816" />
             </View>
           </View>
         </View>
@@ -199,4 +175,3 @@ const style = StyleSheet.create({
     width: 300,
   },
 });
-

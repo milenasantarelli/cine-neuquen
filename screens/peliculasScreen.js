@@ -1,108 +1,99 @@
-import {
-    StyleSheet,
-    SafeAreaView,
-    Platform,
-    StatusBar,
-    View,
-    Image,
-    ScrollView,
-    Button,
-    Text
-} from 'react-native';
-import React from 'react';
-import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
-import { useNavigation } from '@react-navigation/native';
-import data from '../assets/data/movies.json';
-import FakeTabs from '../assets/components/fakeTabs';
-
-
+import React, { useEffect, useState } from 'react';
+import { Text, View, FlatList, ScrollView, StyleSheet, Image } from 'react-native';
+import { collection, getDocs } from 'firebase/firestore';
+import { firestore } from '../credenciales';
 
 const PeliculasScreen = () => {
+  const [peliculas, setPeliculas] = useState([]);
 
-    const navigation = useNavigation();
+  useEffect(() => {
+    const obtenerPeliculas = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(firestore, 'Peliculas'));
+        const peliculasArray = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        console.log("Películas obtenidas:", peliculasArray); // Log para verificar datos
+        setPeliculas(peliculasArray);
+      } catch (error) {
+        console.error('Error al obtener las películas:', error);
+      }
+    };
 
-    const onImagePress = (item) => {
-        console.log(item);
-        navigation.navigate("DetallesPelicula", { item });
-    }
+    obtenerPeliculas();
+  }, []);
 
-    return (
-        <View style={styles.container2}>
-        <ScrollView style={styles.container}>
-            <SafeAreaView >
-                <View style={styles.cont}>
-                    <Image source={require('../assets/logoappc.png')} style={styles.img} />
-                </View>
-                <View style={styles.body}>
-                    <Image
-                    source={require('../assets/Furiosa.jpg')}
-                    />
+  const renderItem = ({ item }) => (
+    <View>
+      <Text style={styles.text}>{item.title}</Text>
+      <Image source={{ uri: item.verticalImgUrl }} style={styles.itemImage} />
+      <Text style={styles.text}>{item.description}</Text>
+    </View>
+  );
 
-                    <Image
-                    source={{uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fcserrasc%2Fposter-peliculas%2F&psig=AOvVaw34aTBKn3uosSXGj9-Pc0zz&ust=1729378727683000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDmpe6CmYkDFQAAAAAdAAAAABAJ'}}
-                    />
-
-                    <Image
-                    
-                    />
-
-                    <Image
-
-                    />
-
-                    <Image
-
-                    />
-
-                </View>
-            </SafeAreaView>
-        </ScrollView>
-        <FakeTabs/>
-        </View>
-    );
+  return (
+    <ScrollView>
+      <View style={styles.view1}>
+        <Image source={require('../assets/logoappc.png')} style={styles.img} />
+      </View>
+      <View style={styles.view2}>
+        {peliculas.length > 0 ? (
+          <FlatList
+            data={peliculas}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+          />
+        ) : (
+          <Text>No hay datos disponibles</Text>
+        )}
+      </View>
+    </ScrollView>
+  );
 };
 
 export default PeliculasScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    },
-    container2: {
-        flex: 1,
-    },
-    text: {
-        textAlign: 'center',
-        color: 'black',
-        marginBottom: 10,
-        fontWeight: "bold",
-    },
-    carouselContainer: {
-        marginBottom: 20,
-    },
-    body: {
-        backgroundColor: '#000000',
-        width: 'auto',
-        height: 900,
-    },
-    cont: {
-        backgroundColor: '#8d0c1b',
-        height: 200,
-    },
-    cartel: {
-        color: '#fff',
-        fontSize: 40,
-        marginLeft: 85,
-        marginTop: 120,
-    },
-    img: {
-        height: 180,
-        width: 180,
-        marginLeft: 120,
-    },
-    concarru: {
-        paddingTop: 30,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#10152f',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  view1: {
+    width: 'auto',
+    height: 300,
+    backgroundColor: '#8d0c1b',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  view2: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 'auto',
+    height: 350,
+    backgroundColor: '#000000',
+  },
+  img: {
+    height: 180,
+    width: 180,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: '#fff',
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  itemContainer: {
+    marginBottom: 20,
+  },
+  itemImage: {
+    height: 200,
+    width: 200,
+  },
 });
-
