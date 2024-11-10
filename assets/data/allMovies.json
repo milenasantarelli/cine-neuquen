@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "nombre": "Rescatando al soldado Ryan",
+        "image": "https://es.web.img3.acsta.net/pictures/14/03/05/09/42/163621.jpg",
+        "horizontalImage": "https://i.ytimg.com/vi/Z9zZUlvGGD0/maxresdefault.jpg",
+        "sipnosis": "Después de desambarcar en Normandía, en plena Segunda Guerra Mundial, unso soldados norteamericanos deben arriesgar sus vidas para salvar al soldado Ran, cuyos tres hermanos han muerto en guerra.",
+        "clasificacion": "PG-13",
+        "duracion": "169 min.",
+        "categoria": "Guerra, Acción"
+    },
+    {
+        "id": 2,
+        "nombre": "Avatar",
+        "image": "https://pics.filmaffinity.com/Avatar-208925608-large.jpg",
+        "horizontalImage": "https://i.pinimg.com/originals/01/57/94/015794f8773a94f929daa5cd99d7a20b.jpg",
+        "sipnosis": "En un exuberante planeta llamado Pandora viven los Na'vi, seres que aparentan ser primitivos pero en realidad son muy evolucionados. Debido a que el ambiente de Pantora es venenoso, los híbridos humanos/Na'vi, llamados Avatares, están relacionados con las mentes humanas, lo que les permite moverse libremente por Pandora. Jake Sully, un exinfante de marina paralítico se transforma a través de un Avatar, y se enamora de una mujer Na'vi",
+        "clasificacion": "PG-13",
+        "duracion": "162 min.",
+        "categoria": "Sci-fi, Fantasía"
+    },
+    {
+        "id": 3,
+        "nombre": "Intensamente 2",
+        "image": "https://images.cdn2.buscalibre.com/fit-in/360x360/68/31/6831e5a7d724376b652f41aa4a15e6e0.jpg",
+        "horizontalImage": "https://www.magazinegalerias.com/wp-content/uploads/2024/05/06_AF_INTENSAMENTE_IMAGEN_1-scaled.jpg",
+        "sipnosis": "Ahora que es adolescente Riley experimenta nuevos sentimientos como Ansiedad y Envidia, que se imponen a los viejos mientras ella duda sobre si abandonar a sus antiguas amigas por otras de la escuela secundaria.",
+        "clasificacion": "PG",
+        "duracion": "93 min.",
+        "categoria": "Animación, Drama, Aventura"
+    }
+]
