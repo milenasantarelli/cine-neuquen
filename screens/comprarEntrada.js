@@ -19,11 +19,17 @@ import * as Linking from "expo-linking";
 import * as FileSystem from "expo-file-system";
 
 const ComprarEntradaScreen = ({ route }) => {
-  const { item, fecha, horario, cantidadEntradas } = route.params || {};
+  const { nombre, fecha, horario, cantidadEntradas, totalAPagar } = route.params || {};
+  console.log("Comprar entrada Screen----");
+  console.log("+++++++" + nombre);
+  console.log("+++++++" + fecha);
+  console.log("+++++++" + horario);
+  console.log("+++++++" + cantidadEntradas);
+  console.log("+++++++" + totalAPagar);
   const navigation = useNavigation();
   //calcular precio
-  const precioEntrada = 1575;
-  const totalAPagar = precioEntrada * cantidadEntradas;
+  // const precioEntrada = 1575;
+  // const totalAPagar = precioEntrada * cantidadEntradas;
   const [modalVisible, setModalVisible] = useState(false); // Estado para controlar visibilidad de modal
   const [modalMessage, setModalMessage] = useState(""); // Mensaje dinámico en el modal
   // const html = `
@@ -114,14 +120,14 @@ const ComprarEntradaScreen = ({ route }) => {
 
     //Comprobante a guardar
     const nuevoComprobante = {
-      nombre: item.nombre,
+      nombre: nombre,
       fecha: fecha,
       horario: horario,
       cantidadEntradas: cantidadEntradas,
       precioEntrada: precioEntrada,
       totalAPagar: totalAPagar,
     };
-    console.log(nuevoComprobante);
+    console.log("comprobante generado" + nuevoComprobante);
 
     try {
       const jsonString = await FileSystem.readAsStringAsync(jsonUri);
@@ -164,18 +170,19 @@ const ComprarEntradaScreen = ({ route }) => {
 
   const manejoDePagos = async () => {
     const data = await IntegracionMP({
-      nombre: item.nombre,
+      nombre: nombre,
       cantidadEntradas: cantidadEntradas,
       totalAPagar: totalAPagar,
       fecha: fecha,
       hora: horario,
     });
+    console.log(data);
     if (!data) {
       return console.log("Error al ejecutar IntegracionMP");
     } else {
-      guardarEnJSON();
+      // guardarEnJSON();
       // await generatePdf();
-      // openBrowserAsync(data);
+      openBrowserAsync(data);
     }
   };
 
@@ -191,7 +198,7 @@ const ComprarEntradaScreen = ({ route }) => {
             <Text>IR A PAGAR</Text>
           </Pressable>
           <View style={styles.Cont2}>
-            <Text style={styles.texto}>Película: {item.nombre}</Text>
+            <Text style={styles.texto}>Película: {nombre}</Text>
             <Text style={styles.texto}>Cantidad Entradas: {cantidadEntradas}</Text>
             <Text style={styles.texto}>Fecha: {fecha}</Text>
             <Text style={styles.texto}>Hora: {horario} hrs</Text>
