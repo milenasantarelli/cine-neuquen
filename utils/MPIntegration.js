@@ -3,6 +3,8 @@ import { ACCESS_TOKEN } from './config.json';
 export const IntegracionMP = async ({nombre, cantidadEntradas, totalAPagar, fecha, hora}) => {
     console.log(nombre, cantidadEntradas, totalAPagar, fecha, hora);
 
+    console.log("ingreso a MPIntegration");
+
     const preferencia = {
         "items": [
             {
@@ -21,8 +23,10 @@ export const IntegracionMP = async ({nombre, cantidadEntradas, totalAPagar, fech
         // },
         //"auto_return": "approved" //redirección automática luego de pago aprobado
     }
+    console.log("PREFERENCIA: " + preferencia);
 
     try {
+        console.log("Entró al TRY");
         const response = await fetch('https://api.mercadopago.com/checkout/preferences', {
             method: "POST",
             headers: {
@@ -31,13 +35,15 @@ export const IntegracionMP = async ({nombre, cantidadEntradas, totalAPagar, fech
             },
             body: JSON.stringify(preferencia)
         })
+        console.log("RESPONSE: " + response);
 
         const data = await response.json()
 
-        console.log(data.init_point)
+        // console.log(data.init_point)
         return data.init_point
 
     } catch (error) {
+        console.log("RESPONSE: " + response);
         console.log(error)
     }
 }
