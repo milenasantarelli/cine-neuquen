@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';  
 import { collection, getDocs } from 'firebase/firestore';  
 import { firestore } from '../credenciales';  
-import { useNavigation } from '@react-navigation/native'; // Importa useNavigation 
-import FakeTabs from '../assets/components/fakeTabs'; 
+import { useNavigation } from '@react-navigation/native';
+import FakeTabs from '../assets/components/fakeTabs';
 
 const PeliculasScreen = () => {  
   const [peliculas, setPeliculas] = useState([]);  
-  const navigation = useNavigation(); // Usa useNavigation  
+  const navigation = useNavigation();
 
   useEffect(() => {  
     const obtenerPeliculas = async () => {  
@@ -55,7 +55,9 @@ const PeliculasScreen = () => {
           )}  
         </View> 
       </ScrollView>  
-      <FakeTabs style={styles.fixedTab} /> 
+      <View style={styles.fixedTab}>
+        <FakeTabs /> 
+      </View>
     </View>
   );  
 };  
@@ -65,7 +67,7 @@ export default PeliculasScreen;
 const styles = StyleSheet.create({  
   container: {  
     flex: 1,  
-    backgroundColor: '#10152f',  
+    backgroundColor: '#000000',  
   },  
   scrollContent: {
     paddingBottom: 80, 
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',  
     width: 'auto',  
     backgroundColor: '#000000',  
+    padding: 15,
   },  
   img: {  
     height: 180,  
@@ -90,7 +93,8 @@ const styles = StyleSheet.create({
   text: {  
     color: '#fff',  
     marginBottom: 20,  
-    marginTop: 20,  
+    marginTop: 20,
+    fontFamily: 'Arial',  
   },  
   itemContainer: {  
     marginBottom: 20,  
@@ -106,4 +110,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#8d0c1b',
     zIndex: 1,
   },
-});
+});  

@@ -7,7 +7,8 @@ import {
     Image,
     ScrollView,
     Button,
-    Text
+    Text,
+    Pressable,
 } from 'react-native';
 import React from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
@@ -34,6 +35,7 @@ const PrincipalScreen = () => {
                     </View>
 
                     <View style={styles.body}>
+                        <Text style={styles.des}>DESTACADOS</Text>
                         <View style={styles.concarru}>
                             <View style={styles.carouselContainer}>
                                 <CuadradoImagenCarrusel
@@ -45,10 +47,11 @@ const PrincipalScreen = () => {
                             </View>
                         </View>
                         <View>
-                            <Button
-                                title='Peliculas'
+                            <Pressable
                                 onPress={()=> navigation.navigate('Peliculas')}
-                            />
+                                style={styles.verMas}
+                            >
+                                <Text style={styles.vertext}>Ver más</Text></Pressable>
                         </View>
                     </View>
                 </SafeAreaView>
@@ -104,4 +107,28 @@ const styles = StyleSheet.create({
     concarru: {
         paddingTop: 30,
     },
+    verMas: {
+        backgroundColor: '#000',
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    vertext: {
+        color: '#fff',
+        fontSize: 20,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        textAlign: 'right',
+        marginRight: 20,
+        fontFamily: 'Arial',
+    },
+    des: {
+        color: '#fff',
+        fontSize: 35,
+        fontWeight: 'bold',
+        display: 'flex',
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginTop: 20,
+        fontFamily: 'Arial',
+    }
 });
