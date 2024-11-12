@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';  
 import { collection, getDocs } from 'firebase/firestore';  
 import { firestore } from '../credenciales';  
-import { useNavigation } from '@react-navigation/native'; // Importa useNavigation  
+import { useNavigation } from '@react-navigation/native'; 
 
 const PeliculasScreen = () => {  
   const [peliculas, setPeliculas] = useState([]);  
-  const navigation = useNavigation(); // Usa useNavigation  
+  const navigation = useNavigation(); 
 
   useEffect(() => {  
     const obtenerPeliculas = async () => {  
