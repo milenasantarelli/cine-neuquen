@@ -14,6 +14,7 @@ import FormularioCompraScreen from "../screens/formularioCompra";
 import MisEntradasScreen from "../screens/misEntradas";
 import PerfilScreen from "../screens/perfilScreen";
 import PeliculasScreen from "../screens/peliculasScreen";
+import DetallesPeliculaScreen from "../screens/DetallesPeliculasScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,32 +24,35 @@ const Stack = createNativeStackNavigator();
 const NavigationStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="RegisterLogin">
+      {/* <Stack.Navigator initialRouteName="RegisterLogin"> */}
+      <Stack.Navigator initialRouteName="Principal">
     
       
         <Stack.Screen name="Registro" component={RegistroScreen} />
 
-        <Stack.Screen name="RegisterLogin" component={RegisterScreen} options={{ title: 'Registro de Login' }} />
+        <Stack.Screen name="RegisterLogin" component={RegisterScreen} options={{ headerShown: false }} />
       
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Iniciar Sesión' }} />
       
         <Stack.Screen name="Principal" component={PrincipalScreen} options={{ title: 'Pantalla Principal' }} />
 
-        <Stack.Screen name="Administrador" component={AccesoAdminScreen} options={{ title: 'Acceso Administrador' }} />
+        <Stack.Screen name="Administrador" component={AccesoAdminScreen} options={{ headerShown: false }} />
 
-        <Stack.Screen name="DetallesPelicula" component={MovieDetails} options={{ headerShown: false}}/>
+        <Stack.Screen name="MovieDetails" component={MovieDetails} options={{ headerShown: false}}/>
 
-        <Stack.Screen name="Base de Datos" component={BdScreen} options={{ title: 'Base de Datos' }} />
+        <Stack.Screen name="Base" component={BdScreen} options={{ headerShown: false }} />
 
-        <Stack.Screen name="Comprar entrada" component={ComprarEntradaScreen} options={{ title: 'Comprar entrada' }} />
+        <Stack.Screen name="Comprar entrada" component={ComprarEntradaScreen} options={{ headerShown: false }} />
 
-        <Stack.Screen name="FormCompra" component={FormularioCompraScreen} options={{ title: 'Formulario Compra' }} />
+        <Stack.Screen name="FormCompra" component={FormularioCompraScreen} options={{ headerShown: false }} />
 
-        <Stack.Screen name="Mis entradas" component={MisEntradasScreen} options={{ title: 'Mis entradas' }} />
+        <Stack.Screen name="Mis entradas" component={MisEntradasScreen} options={{ headerShown: false }} />
         
         <Stack.Screen name="Perfil" component={PerfilScreen} options={{ title: 'Perfil' }} />
 
         <Stack.Screen name="Peliculas" component={PeliculasScreen} options={{ title: 'Peliculas' }} />
+
+        <Stack.Screen name="DetallesPelicula" component={DetallesPeliculaScreen} options={{ title: 'DetallesPelicula' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
