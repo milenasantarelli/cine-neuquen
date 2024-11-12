@@ -94,16 +94,16 @@ export default function MovieDetails({ route }) {
             {/* portada */}
             <Image
               style={styles.portadaMovie}
-              source={{ uri: item.image }}
+              source={{ uri: item.horizontalImage }}
               resizeMode="contain"
             />
 
             {/* sipnosis */}
             <View style={styles.textContainer}>
               <View style={styles.tecnicalData}>
-                <Text style={styles.movieText}>Clasificación: </Text>
-                <Text style={styles.movieText}>Duración: </Text>
-                <Text style={styles.movieText}>Categoría: </Text>
+                <Text style={styles.movieText}>Clasificación: {item.clasificacion}</Text>
+                <Text style={styles.movieText}>Duración: {item.duracion}</Text>
+                <Text style={styles.movieText}>Categoría: {item.categoria}</Text>
               </View>
               <View style={styles.sipnosisContainer}>
                 <Text style={styles.movieText}>Sipnosis: {item.sipnosis}</Text>
@@ -112,6 +112,7 @@ export default function MovieDetails({ route }) {
           </View>
 
           {/* componente para seleccionar cantidad de entradas */}
+          <Text style={styles.movieText}>Seleccione cantidad de entradas:</Text>
           <CantidadEntradas setCantidadEntradas={setcantidadEntradas}/>
 
             {/* componente para seleccionar funcion */}

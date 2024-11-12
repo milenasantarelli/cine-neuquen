@@ -1,117 +1,176 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Button, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import * as ImagePicker from 'expo-image-picker';
+import React, { useState } from 'react';  
+import { StyleSheet, Text, View, ScrollView, TextInput, Button, Image } from 'react-native';  
+import { useNavigation } from '@react-navigation/native';  
+import { firestore, serverTimestamp } from '../credenciales';  
+import { collection, addDoc } from 'firebase/firestore';  
 
-const BdScreen = () => {
-  const navigation = useNavigation();
+const BdScreen = () => {  
+    const navigation = useNavigation();  
+    const [horizontalImgUrl, setHorizontalImgUrl] = useState('');  
+    const [verticalImgUrl, setVerticalImgUrl] = useState('');  
+    const [title, setTitle] = useState('');  
+    const [description, setDescription] = useState('');  
+    const [ageRating, setAgeRating] = useState('');  
+    const [category, setCategory] = useState('');  
+    const [duration, setDuration] = useState('');  
+    const [price, setPrice] = useState('');  
+    const [ticketQuantity, setTicketQuantity] = useState('');  
+    const [showDates, setShowDates] = useState([  
+        { date: '', showtimes: ['', '', ''] },  
+        { date: '', showtimes: ['', '', ''] },  
+        { date: '', showtimes: ['', '', ''] }  
+    ]);  
 
-  const [horizontalImg, setHorizontalImg] = useState(null);
-  const [verticalImg, setVerticalImg] = useState(null);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [ageRating, setAgeRating] = useState('');
-  const [category, setCategory] = useState('');
-  const [duration, setDuration] = useState('');
+    const handleDateChange = (index, value) => {  
+        const newDates = [...showDates];  
+        newDates[index].date = value;  
+        setShowDates(newDates);  
+    };  
 
-  // Imagen horizontal
-  const pickHorizontalImg = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [16, 9], 
-      quality: 1,
-    });
+    const handleShowtimeChange = (dateIndex, timeIndex, value) => {  
+        const newDates = [...showDates];  
+        newDates[dateIndex].showtimes[timeIndex] = value;  
+        setShowDates(newDates);  
+    };  
 
-    if (!result.canceled) {
-      setHorizontalImg(result.assets[0].uri);
-    }
-  };
+    const handleSubmit = async () => {  
+        try {  
+            // Procesar las fechas y horarios para ser enviados a Firestore  
+            const processedShowDates = showDates.map(item => ({  
+                date: item.date,  
+                showtimes: item.showtimes.filter(time => time !== '') // Eliminar horarios vacíos  
+            }));  
 
-  // Imagen vertical
-  const pickVerticalImg = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [9, 16], 
-      quality: 1,
-    });
+            const ticketQty = parseInt(ticketQuantity, 10) || 0;   
 
-    if (!result.canceled) {
-      setVerticalImg(result.assets[0].uri);
-    }
-  };
+            await addDoc(collection(firestore, 'Peliculas'), {  
+                title,  
+                description,  
+                ageRating,  
+                category,  
+                duration: parseInt(duration, 10) || 0,  
+                price: parseFloat(price) || 0,  
+                tickets: ticketQty,  
+                showDates: processedShowDates,  
+                horizontalImgUrl,  
+                verticalImgUrl,  
+                createdAt: serverTimestamp()  
+            });  
+            console.log("Película guardada en Firestore");  
+            alert("Película guardada correctamente");  
+            // Opcional: Volver al menú de inicio después de guardar  
+            navigation.goBack();  
 
-  const handleSubmit = () => {
-    console.log("Título:", title);
-    console.log("Descripción:", description);
-    console.log("Clasificación de edad:", ageRating);
-    console.log("Categoría:", category);
-    console.log("Duración:", duration);
-    console.log("Imagen horizontal:", horizontalImg);
-    console.log("Imagen vertical:", verticalImg);
-  };
+        } catch (error) {  
+            console.error("Error al guardar en Firestore: ", error);  
+            alert("Hubo un error al guardar la película");  
+        }  
+    };  
 
-  return (
-    <View style={style.container}>
-      <ScrollView>
-        <View style={style.view1}>
-          <Image source={require('../assets/logoappc.png')} style={style.img} />
-        </View>
-        <View style={style.body}>
-          <Text style={style.text}>Dar de alta una película</Text>
-          <View style={style.cont}>
-            <TextInput
-              style={style.input}
-              placeholder="Título de la película"
-              value={title}
-              onChangeText={setTitle}
-            />
-            <TextInput
-              style={style.input}
-              placeholder="Descripción de la película"
-              value={description}
-              onChangeText={setDescription}
-              multiline
-            />
-            <TextInput
-              style={style.input}
-              placeholder="Clasificación de edad"
-              value={ageRating}
-              onChangeText={setAgeRating}
-            />
-            <TextInput
-              style={style.input}
-              placeholder="Categoría"
-              value={category}
-              onChangeText={setCategory}
-            />
-            <TextInput
-              style={style.input}
-              placeholder="Duración (en minutos)"
-              value={duration}
-              onChangeText={setDuration}
-              keyboardType="numeric"
-            />
-              <View style={style.boton}>
-                <Button title="Seleccionar imagen horizontal" onPress={pickHorizontalImg} color="#EEA816"/>
-                {horizontalImg && <Image source={{ uri: horizontalImg }} style={style.horizontalImg} />}
-              </View>
-              <View style={style.boton}>
-                <Button title="Seleccionar imagen vertical" onPress={pickVerticalImg} color="#EEA816"/>
-                {verticalImg && <Image source={{ uri: verticalImg }} style={style.verticalImg} />}
-              </View>
-              <View style={style.boton}>
-                <Button title="Enviar" onPress={handleSubmit} color="#EEA816"/>
-              </View>
-          </View>
-        </View>
-      </ScrollView>
-    </View>
-  );
-}
+    return (  
+        <View style={style.container}>  
+            <ScrollView>  
+                <View style={style.view1}>  
+                    <Image source={require('../assets/logoappc.png')} style={style.img} />  
+                </View>  
+                <View style={style.body}>  
+                    <Text style={style.text}>Dar de alta una película</Text>  
+                    <View style={style.cont}>  
+                        {/* Campos de entrada existentes */}  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Título de la película"  
+                            value={title}  
+                            onChangeText={setTitle}  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Descripción de la película"  
+                            value={description}  
+                            onChangeText={setDescription}  
+                            multiline  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Clasificación de edad"  
+                            value={ageRating}  
+                            onChangeText={setAgeRating}  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Categoría"  
+                            value={category}  
+                            onChangeText={setCategory}  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Duración (en minutos)"  
+                            value={duration}  
+                            onChangeText={setDuration}  
+                            keyboardType="numeric"  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Precio (en ejemplo: 100)"  
+                            value={price}  
+                            onChangeText={setPrice}  
+                            keyboardType="numeric"  
+                        />  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="Cantidad de entradas"  
+                            value={ticketQuantity}  
+                            onChangeText={setTicketQuantity}  
+                            keyboardType="numeric"  
+                        />  
 
-export default BdScreen;
+                        {/* Fechas y Horarios */}  
+                        {showDates.map((item, index) => (  
+                            <View key={index}>  
+                                <TextInput  
+                                    style={style.input}  
+                                    placeholder={`Fecha de función ${index + 1} (ej: 2024-11-10)`}  
+                                    value={item.date}  
+                                    onChangeText={(text) => handleDateChange(index, text)}  
+                                />  
+                                {item.showtimes.map((showtime, timeIndex) => (  
+                                    <TextInput  
+                                        key={timeIndex}  
+                                        style={style.input}  
+                                        placeholder={`Horario ${timeIndex + 1} (ej: 14:00)`}  
+                                        value={showtime}  
+                                        onChangeText={(text) => handleShowtimeChange(index, timeIndex, text)}  
+                                    />  
+                                ))}  
+                            </View>  
+                        ))}  
+
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="URL de imagen horizontal"  
+                            value={horizontalImgUrl}  
+                            onChangeText={setHorizontalImgUrl}  
+                        />  
+                        {horizontalImgUrl && <Image source={{ uri: horizontalImgUrl }} style={style.horizontalImg} />}  
+                        <TextInput  
+                            style={style.input}  
+                            placeholder="URL de imagen vertical"  
+                            value={verticalImgUrl}  
+                            onChangeText={setVerticalImgUrl}  
+                        />  
+                        {verticalImgUrl && <Image source={{ uri: verticalImgUrl }} style={style.verticalImg} />}  
+
+                        <View style={style.boton}>  
+                            <Button title="Enviar" onPress={handleSubmit} color="#EEA816" />  
+                        </View>  
+                    </View>  
+                </View>  
+            </ScrollView>  
+        </View>  
+    );  
+};  
+
+export default BdScreen;  
 
 const style = StyleSheet.create({
   container: {
@@ -187,4 +246,3 @@ const style = StyleSheet.create({
     width: 300,
   },
 });
-
