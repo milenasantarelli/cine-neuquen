@@ -185,18 +185,16 @@ const ComprarEntradaScreen = ({ route }) => {
       openBrowserAsync(data);
     }
   };
-
   return (
     <SafeAreaView>
+      <ScrollView >
       <View style={styles.cont}>
         <Image source={require("../assets/logoappc.png")} style={styles.img} />
       </View>
-      <ScrollView style={styles.body}>
-        <View>
+      
+        <View style={styles.body}>
           <Text style={styles.comp}>Detalles de la compra</Text>
-          <Pressable style={styles.boton} onPress={manejoDePagos}>
-            <Text>IR A PAGAR</Text>
-          </Pressable>
+
           <View style={styles.Cont2}>
             <Text style={styles.texto}>Película: {nombre}</Text>
             <Text style={styles.texto}>Cantidad Entradas: {cantidadEntradas}</Text>
@@ -204,16 +202,16 @@ const ComprarEntradaScreen = ({ route }) => {
             <Text style={styles.texto}>Hora: {horario} hrs</Text>
             <Text style={styles.texto}>Total: ${totalAPagar}</Text>
           </View>
-          <Text style={styles.title}>Billetera Virtual</Text>
-          <View style={styles.Cont2}>
-            <Text style={styles.text2}>Alias :</Text>
-            <Text style={styles.text2}>QR :</Text>
-          </View>
+          <Text style={styles.title}>Billetera Virtual Mercado Pago</Text>
           {/* <Pressable style={styles.boton} onPress={manejoDePagos}>
             <Text>IR A PAGAR</Text>
           </Pressable> */}
+                    <Pressable onPress={manejoDePagos}>
+            <Text style={styles.boton}>IR A PAGAR</Text>
+          </Pressable>
         </View>
       </ScrollView>
+     
     </SafeAreaView>
   );
 };
@@ -228,14 +226,19 @@ const styles = StyleSheet.create({
   img: {
     height: 180,
     width: 180,
-    marginLeft: 120,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cont: {
-    backgroundColor: "#384358",
+    backgroundColor: '#8d0c1b',
     height: 200,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   Cont2: {
-    backgroundColor: "#0d4f83",
+    backgroundColor: '#8d0c1b',
     display: "flex",
     marginLeft: 30,
     width: 350,
@@ -244,11 +247,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   body: {
-    backgroundColor: "#10152f",
-    width: "auto",
-    height: 1200,
-    display: 'flex',
-    alignContent: 'center',
+    backgroundColor: '#000000',
+    width: 'auto',
+    height: 1000,
   },
   texto: {
     display: "flex",
@@ -261,9 +262,10 @@ const styles = StyleSheet.create({
   comp: {
     display: "flex",
     fontSize: 60,
-    marginLeft: 80,
+    textAlign: 'center',
     position: "static",
     color: "#fff",
+    fontFamily: 'Arial',
   },
   boton: {
     width: 250,
@@ -271,7 +273,9 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 80,
     fontSize: 20,
-    backgroundColor: "#fff",
+    backgroundColor:'#EEA816',
+    color: '#fff',
+    textAlign: 'center',
   },
   title: {
     display: "flex",
@@ -280,6 +284,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 35,
     position: "static",
+    fontFamily: 'Arial',
   },
   text2: {
     display: "flex",

@@ -34,7 +34,7 @@ export default function RegisterScreen(props) {
       
       await createUserWithEmailAndPassword(auth, email, password, name);
       Alert.alert('Registro exitoso', 'Usuario creado correctamente');
-      props.navigation.navigate('Principal');  
+      props.navigation.navigate('Peliculas');  
     } catch (error) {
       console.log(error);
       Alert.alert('Error', error.message);

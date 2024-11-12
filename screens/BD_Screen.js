@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { firestore, serverTimestamp } from '../credenciales';  
 import { collection, addDoc } from 'firebase/firestore';  
 
+//subir el formulario de las peliculas
 const BdScreen = () => {  
     const navigation = useNavigation();  
     const [horizontalImgUrl, setHorizontalImgUrl] = useState('');  
@@ -20,13 +21,13 @@ const BdScreen = () => {
         { date: '', showtimes: ['', '', ''] },  
         { date: '', showtimes: ['', '', ''] }  
     ]);  
-
+        //fechas de las peliculas
     const handleDateChange = (index, value) => {  
         const newDates = [...showDates];  
         newDates[index].date = value;  
         setShowDates(newDates);  
     };  
-
+        //horarios de las peliculas
     const handleShowtimeChange = (dateIndex, timeIndex, value) => {  
         const newDates = [...showDates];  
         newDates[dateIndex].showtimes[timeIndex] = value;  

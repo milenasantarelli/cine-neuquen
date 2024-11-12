@@ -9,15 +9,34 @@ import {
     Button,
     Text
 } from 'react-native';
-import React from 'react';
+import React ,{useEffect} from 'react';
 import CuadradoImagenCarrusel from '../assets/components/cuadradoImagenCarrusel';
 import { useNavigation } from '@react-navigation/native';
 import data from '../assets/data/movies.json';
 import FakeTabs from '../assets/components/fakeTabs';
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "../credenciales";
 
 
 const PrincipalScreen = () => {
 
+    useEffect(() => {
+        const obtenerPeliculas = async () => {
+          try {
+            const querySnapshot = await getDocs(collection(firestore, "Peliculas"));
+            const peliculasArray = querySnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            console.log("Películas obtenidas:", peliculasArray);
+            setPeliculas(peliculasArray);
+          } catch (error) {
+            console.error("Error al obtener las películas PS:", error);
+          }
+        };
+    
+        obtenerPeliculas();
+      }, []);
     const navigation = useNavigation();
 
     const onImagePress = (item) => {

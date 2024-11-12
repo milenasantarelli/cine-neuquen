@@ -35,7 +35,7 @@ export default function LoginScreen(props) {
     try {
       await signInWithEmailAndPassword(auth, email, password)
       Alert.alert('Iniciando Sesion', 'Accediendo...')
-      props.navigation.navigate('Principal')
+      props.navigation.navigate('Peliculas')
 
     } catch (error) {
       console.log(error);
