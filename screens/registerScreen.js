@@ -69,26 +69,29 @@ const styles = StyleSheet.create({
     color: '#fff',
     bottom:'10%',
     textAlign:'center',
-    marginTop: '10%'
+    marginTop: '10%',
+    fontFamily: 'Arial,'
   },
   subtitulo: {
     fontSize: 45,
     color: '#fff',
     textAlign:'center',
-    bottom:'10%'
-   
+    bottom:'10%',
+    fontFamily: 'Arial',
   },
   subtitulodos: {
     fontSize: 25,
     color: '#fff',
     textAlign:'center',
-    marginBottom:'20%'
+    marginBottom:'20%',
+    fontFamily: 'Arial',
   },
   contenido: {
     fontSize: 15,
     color: '#fff',
     textAlign: 'center',
     paddingHorizontal: 60,
+    fontFamily: 'Arial',
   },
   input2: {
     color: '#fff',

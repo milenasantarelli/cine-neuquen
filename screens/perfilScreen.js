@@ -23,20 +23,19 @@ const PerfilScreen = () => {
     return (
 
     <View style={styles.container}>
-        <ScrollView style={styles.scrollContent}>
+        <ScrollView>
 
             <View style={styles.cont}>
                 <Image source={require('../assets/logoappc.png')} style={styles.img} />
             </View>
             <View style={styles.body}>
-                <Image source={require('../assets/person.png')} style={styles.iconPerfil} />
+                <Image source={require('../assets/iconousuario.png')} style={styles.iconPerfil} />
                 <View style={styles.texts}>
-                
-                <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
+                    <Text style={styles.text}>MIS ENTRADAS</Text>
                 </View>
-                <Text style={styles.text}>MIS ENTRADAS</Text>
+                <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
                 <Button
-                    title='Mis peliculas'
+                    title='             Mis peliculas               ' height= "40" 
                     onPress={()=> navigation.navigate('Mis entradas')}
                     color='#EEA816' style= {styles.Button}
                 />
@@ -53,9 +52,6 @@ export default PerfilScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1
-    },
-    scrollContent: {
-        paddingBottom: 100, 
     },
     body: {
         backgroundColor: '#000000',
@@ -91,13 +87,19 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '80%'
+        marginBottom: '80%',
+        marginTop: -250,
     },
     text: {
         color: '#ffffff',
         fontSize: 30,
-        bottom: '40%',
+        bottom: '35%',
         textAlign: 'center',
+        fontFamily: 'Arial',
+        marginBottom: 10,
+    },
+    texts: {
+        top: -70,
     },
     Button: {
         display: 'flex',

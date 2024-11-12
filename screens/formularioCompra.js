@@ -22,7 +22,7 @@ const FormularioCompraScreen = () => {
                     <Text style={styles.texto}>Hora :</Text>
                 </View>
                 <View style={styles.boton}>
-                    <Button title='IR A MIS ENTRADAS' color='#EEA816'/>
+                    <Button title='         MIS ENTRADAS              ' color='#EEA816'/>
                 </View>
             </View>
         </ScrollView>
@@ -35,7 +35,7 @@ export default FormularioCompraScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex: '1px',
+        flex: 1,
         padding: '20'
     },
     img:{
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 15,
+        fontFamily: 'Arial',
     },
     cont:{
         backgroundColor: '#8d0c1b',
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         position: 'static',
         fontSize: 30,
+        fontFamily: 'Arial',
     },
     titulo: {
         bottom: 20,
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         color: '#fff',
+        fontFamily: 'Arial',
     },
 
 });
