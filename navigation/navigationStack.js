@@ -10,7 +10,6 @@ import AccesoAdminScreen from "../screens/accesoPersonalScreen";
 import MovieDetails from "../screens/movieDetails";
 import BdScreen from "../screens/BD_Screen";
 import ComprarEntradaScreen from "../screens/comprarEntrada";
-import FormularioCompraScreen from "../screens/formularioCompra";
 import MisEntradasScreen from "../screens/misEntradas";
 import PerfilScreen from "../screens/perfilScreen";
 import PeliculasScreen from "../screens/peliculasScreen";
@@ -43,8 +42,6 @@ const NavigationStack = () => {
         <Stack.Screen name="Base" component={BdScreen} options={{ headerShown: false }} />
 
         <Stack.Screen name="Comprar entrada" component={ComprarEntradaScreen} options={{ headerShown: false }} />
-
-        <Stack.Screen name="FormCompra" component={FormularioCompraScreen} options={{ headerShown: false }} />
 
         <Stack.Screen name="Mis entradas" component={MisEntradasScreen} options={{ headerShown: false }} />
         

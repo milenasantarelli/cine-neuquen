@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';  
 import { collection, getDocs } from 'firebase/firestore';  
 import { firestore } from '../credenciales';  
-import { useNavigation } from '@react-navigation/native'; // Importa useNavigation  
+import { useNavigation } from '@react-navigation/native'; // Importa useNavigation 
+import FakeTabs from '../assets/components/fakeTabs'; 
 
 const PeliculasScreen = () => {  
   const [peliculas, setPeliculas] = useState([]);  
@@ -37,22 +38,25 @@ const PeliculasScreen = () => {
   );  
 
   return (  
-    <ScrollView>  
-      <View style={styles.view1}>  
-        <Image source={require('../assets/logoappc.png')} style={styles.img} />  
-      </View>  
-      <View style={styles.view2}>  
-        {peliculas.length > 0 ? (  
-          <FlatList  
-            data={peliculas}  
-            renderItem={renderItem}  
-            keyExtractor={item => item.id}  
-          />  
-        ) : (  
-          <Text>No hay datos disponibles</Text>  
-        )}  
-      </View>  
-    </ScrollView>  
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>  
+        <View style={styles.view1}>  
+          <Image source={require('../assets/logoappc.png')} style={styles.img} />  
+        </View>  
+        <View style={styles.view2}>  
+          {peliculas.length > 0 ? (  
+            <FlatList  
+              data={peliculas}  
+              renderItem={renderItem}  
+              keyExtractor={item => item.id}  
+            />  
+          ) : (  
+            <Text>No hay datos disponibles</Text>  
+          )}  
+        </View> 
+      </ScrollView>  
+      <FakeTabs style={styles.fixedTab} /> 
+    </View>
   );  
 };  
 
@@ -62,21 +66,21 @@ const styles = StyleSheet.create({
   container: {  
     flex: 1,  
     backgroundColor: '#10152f',  
-    alignItems: 'center',  
-    justifyContent: 'center',  
   },  
+  scrollContent: {
+    paddingBottom: 80, 
+  },
   view1: {  
-    width: 'auto',  
-    height: 300,  
-    backgroundColor: '#8d0c1b',  
-    justifyContent: 'center',  
-    alignItems: 'center',  
+    backgroundColor: '#8d0c1b',
+    height: 200,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },  
   view2: {  
     justifyContent: 'center',  
     alignItems: 'center',  
     width: 'auto',  
-    height: 350,  
     backgroundColor: '#000000',  
   },  
   img: {  
@@ -95,4 +99,11 @@ const styles = StyleSheet.create({
     height: 200,  
     width: 200,  
   },  
+  fixedTab: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: '#8d0c1b',
+    zIndex: 1,
+  },
 });

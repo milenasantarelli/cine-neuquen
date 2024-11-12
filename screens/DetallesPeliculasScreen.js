@@ -53,9 +53,11 @@ const DetallesPelicula = ({ route }) => {
   };
 
   return (  
-    <ScrollView style={styles.container}>  
-      <Image source={{ uri: pelicula.horizontalImgUrl }} style={styles.headerImage} />  
-      
+    <ScrollView style={styles.container}> 
+    <View style={styles.body}>
+      <View>
+        <Image source={{ uri: pelicula.horizontalImgUrl }} style={styles.headerImage} />  
+      </View>
       <Text style={styles.title}>{pelicula.title}</Text>  
       
       <Text style={styles.label}>Descripción:</Text>  
@@ -79,7 +81,8 @@ const DetallesPelicula = ({ route }) => {
       <Text style={styles.text}>${precio}</Text>  
 
       <Text style={styles.label}>Selecciona una fecha:</Text>  
-      <Picker  
+      <Picker 
+        style={styles.picker}
         selectedValue={fechaSeleccionada}  
         onValueChange={(itemValue) => {  
           setfechaSeleccionada(itemValue);  
@@ -95,6 +98,7 @@ const DetallesPelicula = ({ route }) => {
 
       <Text style={styles.label}>Selecciona un horario:</Text>  
       <Picker  
+      style={styles.picker}
         selectedValue={horarioSeleccionado}  
         onValueChange={(itemValue) => {
           sethorarioSeleccionado(itemValue);
@@ -125,7 +129,8 @@ const DetallesPelicula = ({ route }) => {
         alert(`Has comprado ${cantidadEntradas} entradas para ${fechaSeleccionada} a las ${hoarioSeleccionado}. Total: $${totalPrice.toFixed(2)}`);
         console.log('Compra confirmada'); // Verificar que se confirma la compra
       }} />   */}
-      <Button title="Confirmar Compra" onPress={(BuyTickets)} />  
+      <Button color='#EEA816' title="  Confirmar Compra  " onPress={(BuyTickets)}/>  
+      </View>
     </ScrollView>  
   );  
 };  
@@ -133,9 +138,17 @@ const DetallesPelicula = ({ route }) => {
 const styles = StyleSheet.create({  
   container: {  
     flex: 1,  
-    padding: 20,  
+    padding: 0,  
     backgroundColor: '#f9f9f9',  
   },  
+  body: {
+    height: 1400,
+    backgroundColor: '#000',
+    padding: 20,
+  },
+  picker: {
+    color: '#fff',
+  },
   headerImage: {  
     height: 300,  
     width: '100%',  
@@ -146,15 +159,19 @@ const styles = StyleSheet.create({
     fontSize: 24,  
     fontWeight: 'bold',  
     marginBottom: 10,  
+    color:'#fff'
   },  
   label: {  
     fontSize: 18,  
     fontWeight: 'bold',  
-    marginTop: 10,  
+    marginTop: 10, 
+    marginBottom: 10, 
+    color: '#fff',
   },  
   text: {  
     fontSize: 16,  
-    marginBottom: 10,  
+    marginBottom: 10,
+    color:'#fff',  
   },  
   input: {  
     borderColor: 'gray',  
@@ -162,6 +179,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,  
     padding: 10,  
     marginBottom: 20,  
+    color: '#fff',
   },  
 });  
 

@@ -46,14 +46,6 @@ const PrincipalScreen = () => {
                         </View>
                         <View>
                             <Button
-                                title='Comprar entrada'
-                                onPress={()=> navigation.navigate('Comprar entrada')}
-                            />
-                            <Button
-                                title='FormCompra'
-                                onPress={()=> navigation.navigate('FormCompra')}
-                            />
-                            <Button
                                 title='Peliculas'
                                 onPress={()=> navigation.navigate('Peliculas')}
                             />
@@ -73,6 +65,7 @@ const styles = StyleSheet.create({
     },
     scrollContent: {
         paddingBottom: 100, 
+        position: 'absolute'
     },
     text: {
         textAlign: 'center',
