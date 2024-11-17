@@ -59,7 +59,7 @@ const PeliculasScreen = () => {
             </View>
           </View>
         <View style={styles.view2}>
-        <Text style={styles.titulo}>Todas las peliculas</Text>
+        <Text style={styles.titulo}>Todas las pelís</Text>
          
           {peliculas.length > 0 ? (
             <FlatList
