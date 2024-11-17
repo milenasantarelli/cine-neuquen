@@ -12,20 +12,30 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.erick2312.cineneuquen"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.erick2312.cineneuquen"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "expo": {
       "scheme": "myapp",
-      "platforms": ["ios", "android"]
+      "platforms": [
+        "ios",
+        "android"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a71e9bfa-0e63-4e98-9f5f-5d5e904bf194"
+      }
     }
   }
 }

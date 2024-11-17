@@ -7,7 +7,7 @@ const FakeTabs = () => {
 
   return (
     <View style={styles.faketabs}>
-      <TouchableOpacity onPress={() => navigation.navigate('Principal')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Peliculas')}>
         <Image
           source={require('../../assets/home.png')}
           style={styles.img}

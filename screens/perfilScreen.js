@@ -9,41 +9,44 @@ const PerfilScreen = () => {
 
     const navigation = useNavigation();
 
-    const [userInfo, setUserInfo] = useState({ email: '', displayName: 'Nombre no disponible' });  
- const auth = getAuth();  
+    const [userInfo, setUserInfo] = useState({ email: '', displayName: 'Nombre no disponible' });
+    const auth = getAuth();
 
- useEffect(() => {  
- const user = auth.currentUser; if (user) {  
- setUserInfo({  
- email: user.email,  
- displayName: user.displayName || 'Nombre no disponible',  
- });  
- }  
- }, [auth]);  
+    useEffect(() => {
+        const user = auth.currentUser; if (user) {
+            setUserInfo({
+                email: user.email,
+                displayName: user.displayName || 'Nombre no disponible',
+            });
+        }
+    }, [auth]);
     return (
 
-    <View style={styles.container}>
-        <ScrollView>
+        <View style={styles.container}>
+            <ScrollView>
 
-            <View style={styles.cont}>
-                <Image source={require('../assets/logoappc.png')} style={styles.img} />
-            </View>
-            <View style={styles.body}>
-                <Image source={require('../assets/iconousuario.png')} style={styles.iconPerfil} />
-                <View style={styles.texts}>
-                    <Text style={styles.text}>MIS ENTRADAS</Text>
+                <View style={styles.cont}>
+                    <Image source={require('../assets/logoappc.png')} style={styles.img} />
                 </View>
-                <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
-                <Button
-                    title='             Mis peliculas               ' height= "40" 
-                    onPress={()=> navigation.navigate('Mis entradas')}
-                    color='#EEA816' style= {styles.Button}
-                />
-            </View>
+                <View style={styles.body}>
+                    <Image source={require('../assets/iconousuario.png')} style={styles.iconPerfil} />
+                    <View style={styles.texts}>
+                        <Text style={styles.text}>MIS ENTRADAS</Text>
+                    </View>
+                    <Text style={styles.text}>email de usuario: {userInfo.email}</Text>
+                    <Button
+                        title='             Mis peliculas               ' height="40"
+                        onPress={() => navigation.navigate('Mis entradas')}
+                        color='#EEA816' style={styles.Button}
+                    />
+                </View>
 
-        </ScrollView>
-        <FakeTabs/>
-    </View>
+
+            </ScrollView>
+            <View style={styles.fixedTab}>
+                <FakeTabs />
+            </View>
+        </View>
     );
 };
 
@@ -105,5 +108,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    fixedTab: {
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: '#8d0c1b',
+        zIndex: 1,
     },
 });
