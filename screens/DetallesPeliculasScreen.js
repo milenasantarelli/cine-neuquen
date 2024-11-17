@@ -133,12 +133,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',  
   },  
   body: {
-    height: 1400,
+    height: 1500,
     backgroundColor: '#000',
     padding: 20,
   },
   picker: {
-    color: '#000',
+    color: '#fff',
   },
   headerImage: {  
     height: 300,  
